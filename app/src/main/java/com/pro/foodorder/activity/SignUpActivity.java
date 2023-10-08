@@ -64,16 +64,20 @@ public class SignUpActivity extends BaseActivity {
                 .addOnCompleteListener(this, task -> {
                     showProgressDialog(false);
                     if (task.isSuccessful()) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                        if (user != null) {
-                            User userObject = new User(user.getEmail(), password);
-                            if (user.getEmail() != null && user.getEmail().contains(Constant.ADMIN_EMAIL_FORMAT)) {
-                                userObject.setAdmin(true);
-                            }
-                            DataStoreManager.setUser(userObject);
-                            GlobalFunction.gotoMainActivity(this);
-                            finishAffinity();
+//                        FirebaseUser user = firebaseAuth.getCurrentUser();
+//                        if (user != null) {
+//                            User userObject = new User(user.getEmail(), password);
+//                            if (user.getEmail() != null && user.getEmail().contains(Constant.ADMIN_EMAIL_FORMAT)) {
+//                                userObject.setAdmin(true);
+//                            }
+                        User userObject = new User(email, password);
+                        if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+                            userObject.setAdmin(true);
                         }
+                        DataStoreManager.setUser(userObject);
+                        GlobalFunction.gotoMainActivity(this);
+                        finishAffinity();
+//                        }
                     } else {
                         Toast.makeText(SignUpActivity.this, getString(R.string.msg_sign_up_error),
                                 Toast.LENGTH_SHORT).show();

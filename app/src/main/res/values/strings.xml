@@ -157,6 +157,7 @@
     <string name="msg_reset_password_successfully">Reset mật khẩu thành công, vui lòng kiểm tra email của bạn</string>
     <string name="msg_email_invalid">Email không hợp lệ, vui lòng nhập lại</string>
     <string name="msg_email_invalid_admin">Email dành cho quản trị viên cần có định dạng …@admin.com</string>
+    <string name="msg_email_invalid_shipper">Email dành cho shipper cần có định dạng …@shipper.com</string>
     <string name="msg_email_invalid_user">Email sai định dạng dành cho người dùng</string>
     <string name="msg_sign_up_error">Đăng ký không thành công, vui lòng thử lại</string>
     <string name="msg_sign_in_error">Đăng nhập không thành công, vui lòng thử lại</string>

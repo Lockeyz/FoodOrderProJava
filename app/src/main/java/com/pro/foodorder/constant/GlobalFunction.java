@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.pro.foodorder.activity.AdminMainActivity;
 import com.pro.foodorder.activity.MainActivity;
+import com.pro.foodorder.activity.ShipperMainActivity;
 import com.pro.foodorder.listener.IGetDateListener;
 import com.pro.foodorder.prefs.DataStoreManager;
 import com.pro.foodorder.utils.StringUtil;
@@ -43,7 +44,11 @@ public class GlobalFunction {
     public static void gotoMainActivity(Context context) {
         if (DataStoreManager.getUser().isAdmin()) {
             GlobalFunction.startActivity(context, AdminMainActivity.class);
-        } else {
+        }
+        if (DataStoreManager.getUser().isShipper()) {
+            GlobalFunction.startActivity(context, ShipperMainActivity.class);
+        }
+        else {
             GlobalFunction.startActivity(context, MainActivity.class);
         }
     }

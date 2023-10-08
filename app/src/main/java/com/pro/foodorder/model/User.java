@@ -7,6 +7,7 @@ public class User {
     private String email;
     private String password;
     private boolean isAdmin;
+    private boolean isShipper;
 
     public User() {
     }
@@ -38,6 +39,14 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public boolean isShipper() {
+        return isShipper;
+    }
+
+    public void setShipper(boolean shipper) {
+        isShipper = shipper;
     }
 
     public String toJSon() {

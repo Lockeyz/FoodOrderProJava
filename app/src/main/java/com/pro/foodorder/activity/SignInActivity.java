@@ -55,7 +55,16 @@ public class SignInActivity extends BaseActivity {
                 return;
             }
 
-            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+            if (mActivitySignInBinding.rdbShipper.isChecked()) {
+                if (!strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+                    Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_shipper), Toast.LENGTH_SHORT).show();
+                } else {
+                    signInUser(strEmail, strPassword);
+                }
+                return;
+            }
+
+            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)||strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
                 Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_user), Toast.LENGTH_SHORT).show();
             } else {
                 signInUser(strEmail, strPassword);
@@ -70,16 +79,20 @@ public class SignInActivity extends BaseActivity {
                 .addOnCompleteListener(this, task -> {
                     showProgressDialog(false);
                     if (task.isSuccessful()) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                        if (user != null) {
-                            User userObject = new User(user.getEmail(), password);
-                            if (user.getEmail() != null && user.getEmail().contains(Constant.ADMIN_EMAIL_FORMAT)) {
-                                userObject.setAdmin(true);
-                            }
-                            DataStoreManager.setUser(userObject);
-                            GlobalFunction.gotoMainActivity(this);
-                            finishAffinity();
+
+                        User userObject = new User(email, password);
+                        if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+                            userObject.setAdmin(true);
                         }
+
+                        if (email != null && email.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+                            userObject.setShipper(true);
+                        }
+
+                        DataStoreManager.setUser(userObject);
+                        GlobalFunction.gotoMainActivity(this);
+                        finishAffinity();
+
                     } else {
                         Toast.makeText(SignInActivity.this, getString(R.string.msg_sign_in_error),
                                 Toast.LENGTH_SHORT).show();

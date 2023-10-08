@@ -18,6 +18,7 @@ public interface Constant {
     int TYPE_PAYMENT_CASH = 1;
     String PAYMENT_METHOD_CASH = "Tiền mặt";
     String ADMIN_EMAIL_FORMAT = "@admin.com";
+    String SHIPPER_EMAIL_FORMAT = "@shipper.com";
 
     // Key Intent
     String KEY_INTENT_FOOD_OBJECT = "food_object";
