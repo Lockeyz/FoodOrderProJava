@@ -15,9 +15,9 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.pro.foodorder.activity.AdminMainActivity;
+import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.activity.MainActivity;
-import com.pro.foodorder.activity.ShipperMainActivity;
+import com.pro.foodorder.activity.shipper.ShipperMainActivity;
 import com.pro.foodorder.listener.IGetDateListener;
 import com.pro.foodorder.prefs.DataStoreManager;
 import com.pro.foodorder.utils.StringUtil;

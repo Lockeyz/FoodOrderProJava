@@ -26,7 +26,8 @@
     <color name="yellow">#FF9800</color>
     <color name="blue">#2196F3</color>
 
-    <color name="bottomTabActive">#F24040</color>
+    <color name="bottomTabActive0">#F24040</color>
+    <color name="bottomTabActive">#009688</color>
     <color name="bottomTabInActive">#171717</color>
     <color name="black_overlay">#667C7474</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.pro.foodorder.activity;
+package com.pro.foodorder.activity.admin;
 
 import android.os.Bundle;
 import android.view.View;

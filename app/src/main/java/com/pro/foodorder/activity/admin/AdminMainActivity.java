@@ -1,4 +1,4 @@
-package com.pro.foodorder.activity;
+package com.pro.foodorder.activity.admin;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.adapter.AdminViewPagerAdapter;
 import com.pro.foodorder.databinding.ActivityAdminMainBinding;
 

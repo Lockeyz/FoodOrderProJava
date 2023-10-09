@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.AddFoodActivity;
-import com.pro.foodorder.activity.AdminMainActivity;
+import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.adapter.AdminFoodAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;

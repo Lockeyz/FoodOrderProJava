@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AdminMainActivity;
-import com.pro.foodorder.activity.AdminReportActivity;
+import com.pro.foodorder.activity.admin.AdminMainActivity;
+import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.activity.ChangePasswordActivity;
 import com.pro.foodorder.activity.SignInActivity;
 import com.pro.foodorder.constant.GlobalFunction;

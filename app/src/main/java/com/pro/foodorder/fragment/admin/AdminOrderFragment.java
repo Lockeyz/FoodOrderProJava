@@ -15,7 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AdminMainActivity;
+import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.adapter.AdminOrderAdapter;
 import com.pro.foodorder.databinding.FragmentAdminOrderBinding;
 import com.pro.foodorder.fragment.BaseFragment;

@@ -103,6 +103,7 @@
     <string name="sign_out">Đăng xuất</string>
     <string name="reset_password">Gửi lại mật khẩu</string>
     <string name="order_history">Lịch sử đặt hàng</string>
+    <string name="delivery_history">Lịch sử giao hàng</string>
     <string name="report">Báo cáo doanh thu</string>
     <string name="add_food">Thêm món ăn</string>
     <string name="edit_food">Chỉnh sửa món ăn</string>
@@ -173,4 +174,6 @@
     <string name="msg_delete_title">Xác nhận xóa</string>
     <string name="msg_confirm_delete">Bạn có chắc chắn muốn xóa mục này không?</string>
     <string name="msg_delete_movie_successfully">Xoá món ăn thành công !!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
