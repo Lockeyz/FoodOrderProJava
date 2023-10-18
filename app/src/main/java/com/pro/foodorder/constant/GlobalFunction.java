@@ -45,7 +45,7 @@ public class GlobalFunction {
         if (DataStoreManager.getUser().isAdmin()) {
             GlobalFunction.startActivity(context, AdminMainActivity.class);
         }
-        if (DataStoreManager.getUser().isShipper()) {
+        else if (DataStoreManager.getUser().isShipper()) {
             GlobalFunction.startActivity(context, ShipperMainActivity.class);
         }
         else {

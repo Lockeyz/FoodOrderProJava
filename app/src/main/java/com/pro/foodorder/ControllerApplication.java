@@ -21,19 +21,20 @@ public class ControllerApplication extends Application {
     public void onCreate() {
         super.onCreate();
         FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance(Constant.FIREBASE_URL);
+//        mFirebaseDatabase = FirebaseDatabase.getInstance(Constant.FIREBASE_URL);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         DataStoreManager.init(getApplicationContext());
     }
 
     public DatabaseReference getFoodDatabaseReference() {
-        return mFirebaseDatabase.getReference("/food");
+        return mFirebaseDatabase.getReference("food");
     }
 
     public DatabaseReference getFeedbackDatabaseReference() {
-        return mFirebaseDatabase.getReference("/feedback");
+        return mFirebaseDatabase.getReference("feedback");
     }
 
     public DatabaseReference getBookingDatabaseReference() {
-        return mFirebaseDatabase.getReference("/booking");
+        return mFirebaseDatabase.getReference("booking");
     }
 }

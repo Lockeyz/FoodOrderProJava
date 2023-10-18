@@ -11,6 +11,7 @@ import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivitySignUpBinding;
 import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
+import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
 
 public class SignUpActivity extends BaseActivity {
@@ -70,10 +71,19 @@ public class SignUpActivity extends BaseActivity {
 //                            if (user.getEmail() != null && user.getEmail().contains(Constant.ADMIN_EMAIL_FORMAT)) {
 //                                userObject.setAdmin(true);
 //                            }
+                        User user = new User(email, password, "", null,
+                                "", false, false);
                         User userObject = new User(email, password);
+
                         if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                             userObject.setAdmin(true);
+                            user.setAdmin(true);
                         }
+
+                        //key để set cho child không được có dấu "chấm"
+                        String key = FirebaseAuth.getInstance().getUid();
+                        FirebaseUtils.getUserReference(key).setValue(user);
+
                         DataStoreManager.setUser(userObject);
                         GlobalFunction.gotoMainActivity(this);
                         finishAffinity();

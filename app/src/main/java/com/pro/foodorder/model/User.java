@@ -1,11 +1,17 @@
 package com.pro.foodorder.model;
 
+import android.text.BoringLayout;
+
 import com.google.gson.Gson;
 
 public class User {
 
     private String email;
     private String password;
+    private String phone;
+    private Boolean gender;
+    private String address;
+
     private boolean isAdmin;
     private boolean isShipper;
 
@@ -15,6 +21,16 @@ public class User {
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public User(String email, String password, String phone, Boolean gender, String address, boolean isAdmin, boolean isShipper) {
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.address = address;
+        this.isAdmin = isAdmin;
+        this.isShipper = isShipper;
     }
 
     public String getEmail() {
@@ -31,6 +47,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean isAdmin() {
