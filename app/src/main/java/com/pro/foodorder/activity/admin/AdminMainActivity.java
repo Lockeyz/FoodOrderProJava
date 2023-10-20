@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.BaseActivity;
-import com.pro.foodorder.adapter.AdminViewPagerAdapter;
+import com.pro.foodorder.adapter.admin.AdminViewPagerAdapter;
 import com.pro.foodorder.databinding.ActivityAdminMainBinding;
 
 public class AdminMainActivity extends BaseActivity {
@@ -43,6 +43,10 @@ public class AdminMainActivity extends BaseActivity {
                         break;
 
                     case 3:
+                        mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_shipper_account).setChecked(true);
+                        break;
+
+                    case 4:
                         mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_account).setChecked(true);
                         break;
                 }
@@ -57,8 +61,10 @@ public class AdminMainActivity extends BaseActivity {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(1);
             } else if (id == R.id.nav_order) {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(2);
-            }  else if (id == R.id.nav_account) {
+            }else if (id == R.id.nav_shipper_account) {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(3);
+            }  else if (id == R.id.nav_account) {
+                mActivityAdminMainBinding.viewpager2.setCurrentItem(4);
             }
             return true;
         });

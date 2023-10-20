@@ -1,9 +1,8 @@
-package com.pro.foodorder.adapter;
+package com.pro.foodorder.adapter.admin;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

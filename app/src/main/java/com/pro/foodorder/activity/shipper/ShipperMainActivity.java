@@ -8,9 +8,7 @@ import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.pro.foodorder.R;
-import com.pro.foodorder.adapter.AdminViewPagerAdapter;
 import com.pro.foodorder.adapter.shipper.ShipperViewPagerAdapter;
-import com.pro.foodorder.databinding.ActivityAdminMainBinding;
 import com.pro.foodorder.databinding.ActivityShipperMainBinding;
 
 public class ShipperMainActivity extends AppCompatActivity {

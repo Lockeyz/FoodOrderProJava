@@ -4,13 +4,18 @@ import android.text.BoringLayout;
 
 import com.google.gson.Gson;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+    private String userId;
     private String email;
     private String password;
+    private String name;
     private String phone;
-    private Boolean gender;
+    private String gender;
     private String address;
+    private String avatar;
 
     private boolean isAdmin;
     private boolean isShipper;
@@ -23,14 +28,26 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String password, String phone, Boolean gender, String address, boolean isAdmin, boolean isShipper) {
+    public User(String userId, String email, String password, String name, String phone, String gender,
+                String address, String avatar, boolean isAdmin, boolean isShipper) {
+        this.userId = userId;
         this.email = email;
         this.password = password;
+        this.name = name;
         this.phone = phone;
         this.gender = gender;
         this.address = address;
+        this.avatar = avatar;
         this.isAdmin = isAdmin;
         this.isShipper = isShipper;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -48,6 +65,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPhone() {
         return phone;
@@ -57,11 +81,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Boolean isGender() {
+
+    public String getGender() {
         return gender;
     }
-
-    public void setGender(Boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -71,6 +95,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public boolean isAdmin() {

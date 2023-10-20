@@ -1,4 +1,4 @@
-package com.pro.foodorder.adapter;
+package com.pro.foodorder.adapter.admin;
 
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemAdminFoodBinding;
-import com.pro.foodorder.listener.IOnManagerFoodListener;
+import com.pro.foodorder.listener.IOnManageFoodListener;
 import com.pro.foodorder.model.Food;
 import com.pro.foodorder.utils.GlideUtils;
 
@@ -19,11 +19,11 @@ import java.util.List;
 public class AdminFoodAdapter extends RecyclerView.Adapter<AdminFoodAdapter.AdminFoodViewHolder> {
 
     private final List<Food> mListFoods;
-    public final IOnManagerFoodListener iOnManagerFoodListener;
+    public final IOnManageFoodListener iOnManageFoodListener;
 
-    public AdminFoodAdapter(List<Food> mListFoods, IOnManagerFoodListener listener) {
+    public AdminFoodAdapter(List<Food> mListFoods, IOnManageFoodListener listener) {
         this.mListFoods = mListFoods;
-        this.iOnManagerFoodListener = listener;
+        this.iOnManageFoodListener = listener;
     }
 
     @NonNull
@@ -69,8 +69,8 @@ public class AdminFoodAdapter extends RecyclerView.Adapter<AdminFoodAdapter.Admi
             holder.mItemAdminFoodBinding.tvPopular.setText("Không");
         }
 
-        holder.mItemAdminFoodBinding.imgEdit.setOnClickListener(v -> iOnManagerFoodListener.onClickUpdateFood(food));
-        holder.mItemAdminFoodBinding.imgDelete.setOnClickListener(v -> iOnManagerFoodListener.onClickDeleteFood(food));
+        holder.mItemAdminFoodBinding.imgEdit.setOnClickListener(v -> iOnManageFoodListener.onClickUpdateFood(food));
+        holder.mItemAdminFoodBinding.imgDelete.setOnClickListener(v -> iOnManageFoodListener.onClickDeleteFood(food));
     }
 
     @Override

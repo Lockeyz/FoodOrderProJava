@@ -1,4 +1,4 @@
-package com.pro.foodorder.adapter;
+package com.pro.foodorder.adapter.admin;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -9,6 +9,7 @@ import com.pro.foodorder.fragment.admin.AdminAccountFragment;
 import com.pro.foodorder.fragment.admin.AdminFeedbackFragment;
 import com.pro.foodorder.fragment.admin.AdminHomeFragment;
 import com.pro.foodorder.fragment.admin.AdminOrderFragment;
+import com.pro.foodorder.fragment.admin.AdminShipperFragment;
 
 public class AdminViewPagerAdapter extends FragmentStateAdapter {
     public AdminViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -29,6 +30,9 @@ public class AdminViewPagerAdapter extends FragmentStateAdapter {
                 return new AdminOrderFragment();
 
             case 3:
+                return new AdminShipperFragment();
+
+            case 4:
                 return new AdminAccountFragment();
 
             default:
@@ -38,6 +42,6 @@ public class AdminViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 5;
     }
 }

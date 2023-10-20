@@ -22,12 +22,12 @@ import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.AddFoodActivity;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
-import com.pro.foodorder.adapter.AdminFoodAdapter;
+import com.pro.foodorder.adapter.admin.AdminFoodAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.FragmentAdminHomeBinding;
 import com.pro.foodorder.fragment.BaseFragment;
-import com.pro.foodorder.listener.IOnManagerFoodListener;
+import com.pro.foodorder.listener.IOnManageFoodListener;
 import com.pro.foodorder.model.Food;
 import com.pro.foodorder.utils.StringUtil;
 
@@ -65,7 +65,7 @@ public class AdminHomeFragment extends BaseFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mFragmentAdminHomeBinding.rcvFood.setLayoutManager(linearLayoutManager);
         mListFood = new ArrayList<>();
-        mAdminFoodAdapter = new AdminFoodAdapter(mListFood, new IOnManagerFoodListener() {
+        mAdminFoodAdapter = new AdminFoodAdapter(mListFood, new IOnManageFoodListener() {
             @Override
             public void onClickUpdateFood(Food food) {
                 onClickEditFood(food);

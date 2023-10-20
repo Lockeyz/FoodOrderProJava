@@ -101,7 +101,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_card_giftcard_24" />
+            android:src="@drawable/ic_gift" />
 
         <TextView
             android:layout_width="wrap_content"
