@@ -32,6 +32,9 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.AddShipperActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.shipper.ShipperReportActivity"
             android:exported="false" />
         <activity

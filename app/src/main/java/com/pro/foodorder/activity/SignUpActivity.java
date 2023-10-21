@@ -79,6 +79,10 @@ public class SignUpActivity extends BaseActivity {
                             userObject.setAdmin(true);
                             user.setAdmin(true);
                         }
+                        if (email != null && email.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+                            userObject.setShipper(true);
+                            user.setShipper(true);
+                        }
 
                         //key để set cho child không được có dấu "chấm"
                         String key = FirebaseAuth.getInstance().getUid();

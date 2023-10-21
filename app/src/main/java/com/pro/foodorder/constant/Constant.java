@@ -22,4 +22,5 @@ public interface Constant {
 
     // Key Intent
     String KEY_INTENT_FOOD_OBJECT = "food_object";
+    String KEY_INTENT_SHIPPER_OBJECT = "shipper_object";
 }

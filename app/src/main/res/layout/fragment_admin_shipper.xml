@@ -40,7 +40,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_food"
+        android:id="@+id/rcv_shipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_search"
@@ -48,7 +48,7 @@
         android:layout_marginBottom="@dimen/define_dimen_10" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_food"
+        android:id="@+id/btn_add_shipper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

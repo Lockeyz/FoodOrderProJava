@@ -1,22 +1,14 @@
 package com.pro.foodorder.adapter.admin;
 
-import android.graphics.Paint;
-import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemAdminShipperBinding;
-import com.pro.foodorder.databinding.ItemAdminShipperBinding;
-import com.pro.foodorder.databinding.ItemAdminShipperBinding;
-import com.pro.foodorder.listener.IOManageShipperListener;
-import com.pro.foodorder.model.Food;
+import com.pro.foodorder.listener.IOnManageUserListener;
 import com.pro.foodorder.model.User;
-import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.GlideUtils;
 
 import java.util.List;
@@ -24,11 +16,11 @@ import java.util.List;
 public class AdminShipperAdapter extends RecyclerView.Adapter<AdminShipperAdapter.AdminShipperViewHolder>{
 
     private final List<User> mListShippers;
-    public final IOManageShipperListener ioManageShipperListener;
+    public final IOnManageUserListener iOnManageShipperListener;
 
-    public AdminShipperAdapter(List<User> mListShippers, IOManageShipperListener ioManageShipperListener) {
+    public AdminShipperAdapter(List<User> mListShippers, IOnManageUserListener iOnManageShipperListener) {
         this.mListShippers = mListShippers;
-        this.ioManageShipperListener = ioManageShipperListener;
+        this.iOnManageShipperListener = iOnManageShipperListener;
     }
 
     @NonNull
@@ -55,11 +47,14 @@ public class AdminShipperAdapter extends RecyclerView.Adapter<AdminShipperAdapte
 //                });
         GlideUtils.loadUrl(shipper.getAvatar(), holder.mItemAdminShipperBinding.imgShipper);
         holder.mItemAdminShipperBinding.tvShipperName.setText(shipper.getName());
+
+        holder.mItemAdminShipperBinding.imgEdit.setOnClickListener(v -> iOnManageShipperListener.onClickUpdateUser(shipper));
+        holder.mItemAdminShipperBinding.imgDelete.setOnClickListener(v -> iOnManageShipperListener.onClickDeleteUser(shipper));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mListShippers.size();
     }
 
 
