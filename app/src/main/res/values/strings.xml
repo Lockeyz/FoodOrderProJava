@@ -91,7 +91,14 @@
     <string name="sign_in_user">Đăng Nhập Tài Khoản</string>
 
     <string name="admin">Quản trị viên</string>
+
     <string name="shipper">Shipper</string>
+    <string name="shipper_name">Họ tên shipper (*)</string>
+    <string name="msg_shipper_email_require">Tài khoản (*)</string>
+    <string name="hint_shipper_email">abc@shipper.com...</string>
+    <string name="msg_shipper_password_require">Mật khẩu (*)</string>
+
+    <string name="msg_phone_require">Vui lòng nhập số điện thoại !!!</string>
 
     <string name="user">Người dùng</string>
     <string name="have_account">Đã có tài khoản?</string>
@@ -120,12 +127,12 @@
     <string name="label_date_from">Từ ngày:</string>
     <string name="label_date_to">Đến ngày:</string>
 
-    <string name="food_name">Tên món ăn(*)</string>
-    <string name="food_description">Mô tả món ăn(*)</string>
-    <string name="food_price">Giá món ăn(*)</string>
-    <string name="food_discount">Khuyến mại(*)</string>
-    <string name="food_image">Link ảnh món ăn(*)</string>
-    <string name="food_image_banner">Link ảnh banner(*)</string>
+    <string name="food_name">Tên món ăn (*)</string>
+    <string name="food_description">Mô tả món ăn (*)</string>
+    <string name="food_price">Giá món ăn (*)</string>
+    <string name="food_discount">Khuyến mại (*)</string>
+    <string name="food_image">Link ảnh món ăn (*)</string>
+    <string name="food_image_banner">Link ảnh banner (*)</string>
     <string name="food_image_other">Link các hình ảnh khác</string>
     <string name="food_image_other_note">Phân cách với nhau bằng dấy [ ; ]</string>
 
@@ -175,6 +182,9 @@
     <string name="msg_confirm_delete">Bạn có chắc chắn muốn xóa mục này không?</string>
     <string name="msg_delete_movie_successfully">Xoá món ăn thành công !!!</string>
     <string name="msg_delete_user_successfully">Xoá tài khoản thành công !!!</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

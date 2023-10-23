@@ -1,13 +1,17 @@
 package com.pro.foodorder.model;
 
-import android.text.BoringLayout;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.Gson;
 
 import java.io.Serializable;
 
+@Entity(tableName = "user")
 public class User implements Serializable {
 
+    @PrimaryKey
     private String userId;
     private String email;
     private String password;

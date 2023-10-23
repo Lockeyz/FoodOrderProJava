@@ -72,8 +72,8 @@ public class AdminShipperFragment extends BaseFragment {
         mAdminShipperAdapter = new AdminShipperAdapter(mListShipper, new IOnManageUserListener() {
 
             @Override
-            public void onClickUpdateUser(User user) {
-                onClickEditShipper(user);
+            public void onClickUpdateUser(User shipper) {
+                onClickEditShipper(shipper);
             }
 
             @Override
@@ -158,7 +158,7 @@ public class AdminShipperFragment extends BaseFragment {
         if (getActivity() == null) {
             return;
         }
-        ControllerApplication.get(getActivity()).getUserDatabaseReference()
+        ControllerApplication.get(getActivity()).getAllShipperDatabaseReference()
                 .addChildEventListener(new ChildEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override

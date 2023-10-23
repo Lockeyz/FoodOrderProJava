@@ -54,7 +54,7 @@ public class AdminShipperAdapter extends RecyclerView.Adapter<AdminShipperAdapte
 
     @Override
     public int getItemCount() {
-        return mListShippers.size();
+        return null == mListShippers ? 0 : mListShippers.size();
     }
 
 

@@ -1,6 +1,7 @@
 package com.pro.foodorder.activity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Toast;
 
@@ -59,7 +60,9 @@ public class AddFoodActivity extends BaseActivity {
             mActivityAddFoodBinding.btnAddOrEdit.setText(getString(R.string.action_edit));
 
             mActivityAddFoodBinding.edtName.setText(mFood.getName());
+
             mActivityAddFoodBinding.edtDescription.setText(mFood.getDescription());
+
             mActivityAddFoodBinding.edtPrice.setText(String.valueOf(mFood.getPrice()));
             mActivityAddFoodBinding.edtDiscount.setText(String.valueOf(mFood.getSale()));
             mActivityAddFoodBinding.edtImage.setText(mFood.getImage());

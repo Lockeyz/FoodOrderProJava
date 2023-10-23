@@ -78,15 +78,19 @@ public class SignUpActivity extends BaseActivity {
                         if (email != null && email.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                             userObject.setAdmin(true);
                             user.setAdmin(true);
+                            //key để set cho child không được có dấu "chấm"
+                            String key = FirebaseAuth.getInstance().getUid();
+                            FirebaseUtils.getAdminReference(key).setValue(user);
                         }
-                        if (email != null && email.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+                        else if (email != null && email.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
                             userObject.setShipper(true);
                             user.setShipper(true);
+                            String key = FirebaseAuth.getInstance().getUid();
+                            FirebaseUtils.getShipperReference(key).setValue(user);
+                        } else {
+                            String key = FirebaseAuth.getInstance().getUid();
+                            FirebaseUtils.getUserReference(key).setValue(user);
                         }
-
-                        //key để set cho child không được có dấu "chấm"
-                        String key = FirebaseAuth.getInstance().getUid();
-                        FirebaseUtils.getUserReference(key).setValue(user);
 
                         DataStoreManager.setUser(userObject);
                         GlobalFunction.gotoMainActivity(this);

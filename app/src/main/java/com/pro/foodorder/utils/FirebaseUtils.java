@@ -14,9 +14,14 @@ public class FirebaseUtils {
     }
 
     public static DatabaseReference getUserReference(String userId){
-        return FirebaseDatabase.getInstance().getReference("users").child(userId);
+        return FirebaseDatabase.getInstance().getReference("user").child(userId);
     }
-
+    public static DatabaseReference getAdminReference(String userId){
+        return FirebaseDatabase.getInstance().getReference("admin").child(userId);
+    }
+    public static DatabaseReference getShipperReference(String userId){
+        return FirebaseDatabase.getInstance().getReference("shipper").child(userId);
+    }
     public static StorageReference getCurrentProfilePicStorageRef(){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(FirebaseUtils.currentUserId());
