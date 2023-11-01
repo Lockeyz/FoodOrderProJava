@@ -37,7 +37,7 @@
                         android:src="@drawable/image_no_available"
                         tools:ignore="ContentDescription" />
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/tv_sale_off"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                         android:padding="@dimen/define_dimen_2"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_xxsmall"
-                        android:textStyle="bold" />
+                        android:textStyle="bold" />-->
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -100,12 +100,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_popular"
+                        android:text="@string/label_phone"
                         android:textColor="@color/textColorSecondary"
                         android:textSize="@dimen/text_size_small" />
 
                     <TextView
-                        android:id="@+id/tv_popular"
+                        android:id="@+id/tv_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/define_dimen_5"
@@ -142,11 +142,11 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_food_description"
+            android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_5"
-            android:text="@string/app_name"
+            android:text="Địa chỉ:"
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@color/textColorSecondary"

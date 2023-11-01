@@ -63,7 +63,7 @@ public class AdminOrderFragment extends BaseFragment {
         if (getActivity() == null) {
             return;
         }
-        ControllerApplication.get(getActivity()).getBookingDatabaseReference()
+        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                 .addChildEventListener(new ChildEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
@@ -124,7 +124,7 @@ public class AdminOrderFragment extends BaseFragment {
         if (getActivity() == null) {
             return;
         }
-        ControllerApplication.get(getActivity()).getBookingDatabaseReference()
+        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                 .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
     }
 

@@ -129,7 +129,7 @@ public class AdminHomeFragment extends BaseFragment {
                     if (getActivity() == null) {
                         return;
                     }
-                    ControllerApplication.get(getActivity()).getFoodDatabaseReference()
+                    ControllerApplication.get(getActivity()).getAllFoodDatabaseReference()
                             .child(String.valueOf(food.getId())).removeValue((error, ref) ->
                             Toast.makeText(getActivity(),
                                     getString(R.string.msg_delete_movie_successfully), Toast.LENGTH_SHORT).show());
@@ -153,7 +153,7 @@ public class AdminHomeFragment extends BaseFragment {
         if (getActivity() == null) {
             return;
         }
-        ControllerApplication.get(getActivity()).getFoodDatabaseReference()
+        ControllerApplication.get(getActivity()).getAllFoodDatabaseReference()
                 .addChildEventListener(new ChildEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override

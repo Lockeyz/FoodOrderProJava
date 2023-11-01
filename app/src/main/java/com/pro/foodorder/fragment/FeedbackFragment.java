@@ -50,7 +50,7 @@ public class FeedbackFragment extends BaseFragment {
         } else {
             activity.showProgressDialog(true);
             Feedback feedback = new Feedback(strName, strPhone, strEmail, strComment);
-            ControllerApplication.get(getActivity()).getFeedbackDatabaseReference()
+            ControllerApplication.get(getActivity()).getALlFeedbackDatabaseReference()
                     .child(String.valueOf(System.currentTimeMillis()))
                     .setValue(feedback, (databaseError, databaseReference) -> {
                 activity.showProgressDialog(false);

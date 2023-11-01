@@ -73,7 +73,7 @@ public class AdminReportActivity extends AppCompatActivity {
     }
 
     private void getListRevenue() {
-        ControllerApplication.get(this).getBookingDatabaseReference().addValueEventListener(new ValueEventListener() {
+        ControllerApplication.get(this).getAllBookingDatabaseReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Order> list = new ArrayList<>();

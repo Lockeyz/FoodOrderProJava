@@ -50,7 +50,7 @@ public class OrderHistoryActivity extends BaseActivity {
     }
 
     public void getListOrders() {
-        ControllerApplication.get(this).getBookingDatabaseReference()
+        ControllerApplication.get(this).getAllBookingDatabaseReference()
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

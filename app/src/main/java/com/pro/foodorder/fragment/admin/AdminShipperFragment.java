@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +37,7 @@ import com.pro.foodorder.listener.IOnManageFoodListener;
 import com.pro.foodorder.listener.IOnManageUserListener;
 import com.pro.foodorder.model.Food;
 import com.pro.foodorder.model.User;
+import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
 
 import java.util.ArrayList;
@@ -44,6 +48,7 @@ public class AdminShipperFragment extends BaseFragment {
     private FragmentAdminShipperBinding mFragmentAdminShipperBinding;
     private List<User> mListShipper;
     private AdminShipperAdapter mAdminShipperAdapter;
+    private FirebaseAuth mAuth2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -134,7 +139,28 @@ public class AdminShipperFragment extends BaseFragment {
                     if (getActivity() == null) {
                         return;
                     }
-                    ControllerApplication.get(getActivity()).getFoodDatabaseReference()
+                    // Xóa tài khoản ở Authentication
+
+                    FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
+                            .setDatabaseUrl("https://food-order-a56b8-default-rtdb.firebaseio.com")
+                            .setApiKey("AIzaSyA1Zn4Rl96b8_ogMyq8UzuaUKu3qyGLfv4")
+                            .setApplicationId("food-order-a56b8").build();
+
+                    try {
+                        FirebaseApp myApp = FirebaseApp.initializeApp(getContext(), firebaseOptions, "FoodOrder");
+                        mAuth2 = FirebaseAuth.getInstance(myApp);
+                    } catch (IllegalStateException e) {
+                        mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("FoodOreder"));
+                    }
+
+                    mAuth2.signInWithEmailAndPassword(shipper.getEmail(), shipper.getPassword())
+                            .addOnCompleteListener(task -> {
+                                mAuth2.getCurrentUser().delete();
+                                mAuth2.signOut();
+                            });
+
+
+                    ControllerApplication.get(getActivity()).getAllShipperDatabaseReference()
                             .child(String.valueOf(shipper.getUserId())).removeValue((error, ref) ->
                                     Toast.makeText(getActivity(),
                                             getString(R.string.msg_delete_user_successfully), Toast.LENGTH_SHORT).show());

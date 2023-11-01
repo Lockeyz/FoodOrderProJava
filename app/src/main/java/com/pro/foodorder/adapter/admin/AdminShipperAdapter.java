@@ -47,6 +47,9 @@ public class AdminShipperAdapter extends RecyclerView.Adapter<AdminShipperAdapte
 //                });
         GlideUtils.loadUrl(shipper.getAvatar(), holder.mItemAdminShipperBinding.imgShipper);
         holder.mItemAdminShipperBinding.tvShipperName.setText(shipper.getName());
+        holder.mItemAdminShipperBinding.tvEmail.setText(shipper.getEmail());
+        holder.mItemAdminShipperBinding.tvPhone.setText(shipper.getPhone());
+        holder.mItemAdminShipperBinding.tvAddress.setText("Địa chỉ: " + shipper.getAddress());
 
         holder.mItemAdminShipperBinding.imgEdit.setOnClickListener(v -> iOnManageShipperListener.onClickUpdateUser(shipper));
         holder.mItemAdminShipperBinding.imgDelete.setOnClickListener(v -> iOnManageShipperListener.onClickDeleteUser(shipper));

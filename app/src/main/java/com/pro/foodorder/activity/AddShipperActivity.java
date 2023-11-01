@@ -116,8 +116,6 @@ public class AddShipperActivity extends BaseActivity {
 //            }
 //        }
 
-
-
         if (StringUtil.isEmpty(strName)) {
             Toast.makeText(this, getString(R.string.msg_name_food_require), Toast.LENGTH_SHORT).show();
             return;
@@ -176,7 +174,7 @@ public class AddShipperActivity extends BaseActivity {
 
         // Add shipper
         showProgressDialog(true);
-        mAuth1 = FirebaseAuth.getInstance();
+
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setDatabaseUrl("https://food-order-a56b8-default-rtdb.firebaseio.com")
                 .setApiKey("AIzaSyA1Zn4Rl96b8_ogMyq8UzuaUKu3qyGLfv4")

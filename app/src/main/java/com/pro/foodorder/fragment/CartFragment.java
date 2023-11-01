@@ -188,7 +188,7 @@ public class CartFragment extends BaseFragment {
                 String strEmail = DataStoreManager.getUser().getEmail();
                 Order order = new Order(id, strName, strEmail, strPhone, strAddress,
                         mAmount, getStringListFoodsOrder(), Constant.TYPE_PAYMENT_CASH, false);
-                ControllerApplication.get(getActivity()).getBookingDatabaseReference()
+                ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                         .child(String.valueOf(id))
                         .setValue(order, (error1, ref1) -> {
                             GlobalFunction.showToastMessage(getActivity(), getString(R.string.msg_order_success));

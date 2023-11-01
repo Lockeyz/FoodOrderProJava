@@ -1,7 +1,6 @@
 package com.pro.foodorder.activity;
 
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Toast;
 
@@ -153,7 +152,7 @@ public class AddFoodActivity extends BaseActivity {
                 map.put("images", listImages);
             }
 
-            ControllerApplication.get(this).getFoodDatabaseReference()
+            ControllerApplication.get(this).getAllFoodDatabaseReference()
                     .child(String.valueOf(mFood.getId())).updateChildren(map, (error, ref) -> {
                 showProgressDialog(false);
                 Toast.makeText(AddFoodActivity.this,
@@ -171,7 +170,7 @@ public class AddFoodActivity extends BaseActivity {
         if (!listImages.isEmpty()) {
             food.setImages(listImages);
         }
-        ControllerApplication.get(this).getFoodDatabaseReference()
+        ControllerApplication.get(this).getAllFoodDatabaseReference()
                 .child(String.valueOf(foodId)).setValue(food, (error, ref) -> {
             showProgressDialog(false);
             mActivityAddFoodBinding.edtName.setText("");

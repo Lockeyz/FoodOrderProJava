@@ -6,7 +6,6 @@ import android.content.Context;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.prefs.DataStoreManager;
 
 public class ControllerApplication extends Application {
@@ -35,15 +34,15 @@ public class ControllerApplication extends Application {
     public DatabaseReference getAllShipperDatabaseReference() {
         return mFirebaseDatabase.getReference("shipper");
     }
-    public DatabaseReference getFoodDatabaseReference() {
+    public DatabaseReference getAllFoodDatabaseReference() {
         return mFirebaseDatabase.getReference("food");
     }
 
-    public DatabaseReference getFeedbackDatabaseReference() {
+    public DatabaseReference getALlFeedbackDatabaseReference() {
         return mFirebaseDatabase.getReference("feedback");
     }
 
-    public DatabaseReference getBookingDatabaseReference() {
+    public DatabaseReference getAllBookingDatabaseReference() {
         return mFirebaseDatabase.getReference("booking");
     }
 }
