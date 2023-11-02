@@ -1,5 +1,7 @@
 package com.pro.foodorder.activity.admin;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,10 +15,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.AddShipperActivity;
+import com.pro.foodorder.activity.DetailOrderActivity;
 import com.pro.foodorder.adapter.RevenueAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityAdminReportBinding;
+import com.pro.foodorder.listener.IOnManageOrderListener;
 import com.pro.foodorder.listener.IOnSingleClickListener;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.utils.DateTimeUtils;
@@ -126,12 +131,23 @@ public class AdminReportActivity extends AppCompatActivity {
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mActivityAdminReportBinding.rcvOrderHistory.setLayoutManager(linearLayoutManager);
-        RevenueAdapter revenueAdapter = new RevenueAdapter(list);
+        RevenueAdapter revenueAdapter = new RevenueAdapter(list, new IOnManageOrderListener() {
+            @Override
+            public void onClickDetailOrder(Order order) {
+                detailOrderItem(order);
+            }
+        });
         mActivityAdminReportBinding.rcvOrderHistory.setAdapter(revenueAdapter);
 
         // Calculate total
         String strTotalValue = getTotalValues(list) + Constant.CURRENCY;
         mActivityAdminReportBinding.tvTotalValue.setText(strTotalValue);
+    }
+
+    private void detailOrderItem(Order order) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constant.KEY_INTENT_ORDER_OBJECT, order);
+        GlobalFunction.startActivity(getApplicationContext(), DetailOrderActivity.class, bundle);
     }
 
     private int getTotalValues(List<Order> list) {

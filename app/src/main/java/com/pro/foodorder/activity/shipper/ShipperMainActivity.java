@@ -1,6 +1,5 @@
 package com.pro.foodorder.activity.shipper;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
@@ -8,10 +7,11 @@ import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.adapter.shipper.ShipperViewPagerAdapter;
 import com.pro.foodorder.databinding.ActivityShipperMainBinding;
 
-public class ShipperMainActivity extends AppCompatActivity {
+public class ShipperMainActivity extends BaseActivity {
 
     private ActivityShipperMainBinding mActivityShipperMainBinding;
 

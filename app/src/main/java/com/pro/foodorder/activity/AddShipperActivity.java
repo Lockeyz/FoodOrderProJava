@@ -80,7 +80,7 @@ public class AddShipperActivity extends BaseActivity {
             mActivityAddShipperBinding.toolbar.tvTitle.setText("Thêm tài khoản shipper");
             mActivityAddShipperBinding.btnAddOrEdit.setText(getString(R.string.action_add));
         }
-        Toast.makeText(this, FirebaseAuth.getInstance().getUid() + "", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, FirebaseAuth.getInstance().getUid() + "", Toast.LENGTH_SHORT).show();
     }
 
 //    private String getTextOtherImages() {
@@ -174,7 +174,6 @@ public class AddShipperActivity extends BaseActivity {
 
         // Add shipper
         showProgressDialog(true);
-
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setDatabaseUrl("https://food-order-a56b8-default-rtdb.firebaseio.com")
                 .setApiKey("AIzaSyA1Zn4Rl96b8_ogMyq8UzuaUKu3qyGLfv4")
@@ -184,12 +183,11 @@ public class AddShipperActivity extends BaseActivity {
             FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "FoodOrder");
             mAuth2 = FirebaseAuth.getInstance(myApp);
         } catch (IllegalStateException e) {
-            mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("FoodOreder"));
+            mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("FoodOrder"));
         }
 
         mAuth2.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, task -> {
-                    showProgressDialog(false);
                     if (task.isSuccessful()){
 
                         String userId = mAuth2.getUid();
@@ -200,9 +198,18 @@ public class AddShipperActivity extends BaseActivity {
 
                         FirebaseUtils.getShipperReference(userId).setValue(user);
                         mAuth2.signOut();
+
+                        showProgressDialog(false);
+                        Toast.makeText(this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
                     }
                 });
 
+        mActivityAddShipperBinding.edtName.setText("");
+        mActivityAddShipperBinding.edtEmail.setText("");
+        mActivityAddShipperBinding.edtPassword.setText("");
+        mActivityAddShipperBinding.edtPhone.setText("");
+        mActivityAddShipperBinding.edtGender.setText("");
+        mActivityAddShipperBinding.edtAddress.setText("");
 
 //        long foodId = System.currentTimeMillis();
 //        FoodObject food = new FoodObject(foodId, strName, strEmail, Integer.parseInt(strPassword),

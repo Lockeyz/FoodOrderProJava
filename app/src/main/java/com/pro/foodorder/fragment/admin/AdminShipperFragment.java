@@ -78,7 +78,7 @@ public class AdminShipperFragment extends BaseFragment {
 
             @Override
             public void onClickUpdateUser(User shipper) {
-                onClickEditShipper(shipper);
+                updateShipperItem(shipper);
             }
 
             @Override
@@ -125,7 +125,7 @@ public class AdminShipperFragment extends BaseFragment {
         GlobalFunction.startActivity(getActivity(), AddShipperActivity.class);
     }
 
-    private void onClickEditShipper(User shipper) {
+    private void updateShipperItem(User shipper) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constant.KEY_INTENT_SHIPPER_OBJECT, shipper);
         GlobalFunction.startActivity(getActivity(), AddShipperActivity.class, bundle);
