@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.databinding.ActivityChangePasswordBinding;
 import com.pro.foodorder.model.User;
@@ -23,6 +24,9 @@ public class ChangePasswordActivity extends BaseActivity {
 
         mActivityChangePasswordBinding.imgBack.setOnClickListener(v -> onBackPressed());
         mActivityChangePasswordBinding.btnChangePassword.setOnClickListener(v -> onClickValidateChangePassword());
+
+
+        Toast.makeText(this, FirebaseAuth.getInstance().getCurrentUser()+"", Toast.LENGTH_SHORT).show();
     }
 
     private void onClickValidateChangePassword() {
@@ -44,6 +48,7 @@ public class ChangePasswordActivity extends BaseActivity {
         } else {
             changePassword(strNewPassword);
         }
+        changePassword(strNewPassword);
     }
 
     private void changePassword(String newPassword) {
@@ -52,6 +57,7 @@ public class ChangePasswordActivity extends BaseActivity {
         if (user == null) {
             return;
         }
+
         user.updatePassword(newPassword)
                 .addOnCompleteListener(task -> {
                     showProgressDialog(false);
@@ -64,6 +70,7 @@ public class ChangePasswordActivity extends BaseActivity {
                         mActivityChangePasswordBinding.edtOldPassword.setText("");
                         mActivityChangePasswordBinding.edtNewPassword.setText("");
                         mActivityChangePasswordBinding.edtConfirmPassword.setText("");
+
                     }
                 });
     }

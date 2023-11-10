@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/define_dimen_10"
-    android:layout_marginEnd="@dimen/define_dimen_10"
     app:cardCornerRadius="@dimen/define_dimen_6">
 
     <LinearLayout
@@ -12,7 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
         android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/layout_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận đơn hàng?"/>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận"/>
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hủy bỏ"/>
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Trạng thái: Chờ xác nhận"/>
+
+            <TextView
+                android:id="@+id/tv_shipper"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Shipper"/>
+
+
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -171,6 +210,33 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
         </RelativeLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_20"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rdb_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chờ xác nhận"
+                android:layout_marginEnd="10dp"/>
+
+            <RadioButton
+                android:id="@+id/rdb_shipper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang chuẩn bị" />
+
+            <RadioButton
+                android:id="@+id/rdb_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Đang giao" />
+        </RadioGroup>
 
         <View
             android:layout_width="match_parent"

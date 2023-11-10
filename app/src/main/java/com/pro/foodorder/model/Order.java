@@ -12,6 +12,7 @@ public class Order implements Serializable {
     private int amount;
     private String foods;
     private int payment;
+    private String shipperId;
     private String state;
     private boolean completed;
 
@@ -115,6 +116,14 @@ public class Order implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getShipperId() {
+        return shipperId;
+    }
+
+    public void setShipperId(String shipperId) {
+        this.shipperId = shipperId;
     }
 
     public boolean isCompleted() {

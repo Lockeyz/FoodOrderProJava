@@ -31,17 +31,16 @@ public class ShipperMainActivity extends BaseActivity {
                 super.onPageSelected(position);
                 switch (position) {
                     case 0:
-                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
-                        break;
-
-                    case 1:
-                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_feedback).setChecked(true);
-                        break;
-
-                    case 2:
                         mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_order).setChecked(true);
                         break;
 
+                    case 1:
+                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
+                        break;
+
+                    case 2:
+                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_feedback).setChecked(true);
+                        break;
                     case 3:
                         mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_account).setChecked(true);
                         break;
@@ -51,11 +50,11 @@ public class ShipperMainActivity extends BaseActivity {
 
         mActivityShipperMainBinding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_home) {
+            if (id == R.id.nav_order) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(0);
-            } else if (id == R.id.nav_feedback) {
+            } else if (id == R.id.nav_home) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(1);
-            } else if (id == R.id.nav_order) {
+            } else if (id == R.id.nav_feedback) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(2);
             }  else if (id == R.id.nav_account) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(3);

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.ChangePasswordActivity;
+import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.activity.shipper.ShipperMainActivity;
 import com.pro.foodorder.activity.SignInActivity;
 import com.pro.foodorder.activity.shipper.ShipperReportActivity;
@@ -32,9 +33,12 @@ public class ShipperAccountFragment extends BaseFragment {
 
         fragmentShipperAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
+        fragmentShipperAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickReport());
+
         fragmentShipperAccountBinding.layoutReport.setOnClickListener(v -> onClickReport());
-        fragmentShipperAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
+
         fragmentShipperAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
+        fragmentShipperAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
 
         return fragmentShipperAccountBinding.getRoot();
     }

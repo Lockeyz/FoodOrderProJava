@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.ChangePasswordActivity;
+import com.pro.foodorder.activity.FeedbackActivity;
 import com.pro.foodorder.activity.MainActivity;
 import com.pro.foodorder.activity.OrderHistoryActivity;
 import com.pro.foodorder.activity.SignInActivity;
@@ -27,12 +28,16 @@ public class AccountFragment extends BaseFragment {
 
         fragmentAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
-        fragmentAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
+
         fragmentAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
         fragmentAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickOrderHistory());
+        fragmentAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
+        fragmentAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
 
         return fragmentAccountBinding.getRoot();
     }
+
+
 
     @Override
     protected void initToolbar() {
@@ -47,6 +52,10 @@ public class AccountFragment extends BaseFragment {
 
     private void onClickChangePassword() {
         GlobalFunction.startActivity(getActivity(), ChangePasswordActivity.class);
+    }
+
+    private void onClickFeedback() {
+        GlobalFunction.startActivity(getActivity(), FeedbackActivity.class);
     }
 
     private void onClickSignOut() {

@@ -40,7 +40,6 @@ public class OrderHistoryActivity extends BaseActivity {
         mActivityOrderHistoryBinding.toolbar.imgBack.setVisibility(View.VISIBLE);
         mActivityOrderHistoryBinding.toolbar.imgCart.setVisibility(View.GONE);
         mActivityOrderHistoryBinding.toolbar.tvTitle.setText(getString(R.string.order_history));
-
         mActivityOrderHistoryBinding.toolbar.imgBack.setOnClickListener(v -> onBackPressed());
     }
 

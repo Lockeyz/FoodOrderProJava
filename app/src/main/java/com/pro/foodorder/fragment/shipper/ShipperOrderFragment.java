@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +35,7 @@ public class ShipperOrderFragment extends BaseFragment {
     private List<Order> mListOrder;
     private AdminOrderAdapter mAdminOrderAdapter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -39,6 +43,7 @@ public class ShipperOrderFragment extends BaseFragment {
         mFragmentShipperOrderBinding = FragmentShipperOrderBinding.inflate(inflater, container, false);
         initView();
         getListOrders();
+
         return mFragmentShipperOrderBinding.getRoot();
     }
 

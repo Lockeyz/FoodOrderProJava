@@ -24,19 +24,15 @@ public class ShipperViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new ShipperHomeFragment();
-
-            case 1:
-                return new ShipperFeedbackFragment();
-
-            case 2:
                 return new ShipperOrderFragment();
-
+            case 1:
+                return new ShipperHomeFragment();
+            case 2:
+                return new ShipperFeedbackFragment();
             case 3:
                 return new ShipperAccountFragment();
-
             default:
-                return new ShipperHomeFragment();
+                return new ShipperOrderFragment();
         }
     }
 
