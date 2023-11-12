@@ -33,16 +33,16 @@ public class MainActivity extends BaseActivity {
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
                         break;
 
-                    case 1:
+//                    case 1:
+//                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_cart).setChecked(true);
+//                        break;
+
+                    case 2:
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_cart).setChecked(true);
                         break;
 
-                    case 2:
-                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_feedback).setChecked(true);
-                        break;
-
                     case 3:
-                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_contact).setChecked(true);
+                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_order).setChecked(true);
                         break;
 
                     case 4:
@@ -56,11 +56,13 @@ public class MainActivity extends BaseActivity {
             int id = item.getItemId();
             if (id == R.id.nav_home) {
                 mActivityMainBinding.viewpager2.setCurrentItem(0);
-            } else if (id == R.id.nav_cart) {
-                mActivityMainBinding.viewpager2.setCurrentItem(1);
-            } else if (id == R.id.nav_feedback) {
+            }
+//            else if (id == R.id.nav_cart) {
+//                mActivityMainBinding.viewpager2.setCurrentItem(1);
+//            }
+            else if (id == R.id.nav_cart) {
                 mActivityMainBinding.viewpager2.setCurrentItem(2);
-            } else if (id == R.id.nav_contact) {
+            } else if (id == R.id.nav_order) {
                 mActivityMainBinding.viewpager2.setCurrentItem(3);
             } else if (id == R.id.nav_account) {
                 mActivityMainBinding.viewpager2.setCurrentItem(4);

@@ -32,6 +32,9 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.ContactActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FeedbackActivity"
             android:exported="false" />
         <activity

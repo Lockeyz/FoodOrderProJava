@@ -21,12 +21,13 @@ import java.util.List;
 
 public class ContactFragment extends BaseFragment {
 
+    FragmentContactBinding mFragmentContactBinding;
     private ContactAdapter mContactAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentContactBinding mFragmentContactBinding = FragmentContactBinding.inflate(inflater, container, false);
+        mFragmentContactBinding = FragmentContactBinding.inflate(inflater, container, false);
 
         mContactAdapter = new ContactAdapter(getActivity(), getListContact(), () -> GlobalFunction.callPhoneNumber(getActivity()));
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);

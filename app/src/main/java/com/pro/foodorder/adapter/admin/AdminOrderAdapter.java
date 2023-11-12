@@ -87,9 +87,9 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
 
         private final ItemAdminOrderBinding mItemAdminOrderBinding;
 
-        public AdminOrderViewHolder(@NonNull ItemAdminOrderBinding itemAdminOrderBinding) {
-            super(itemAdminOrderBinding.getRoot());
-            this.mItemAdminOrderBinding = itemAdminOrderBinding;
+        public AdminOrderViewHolder(@NonNull ItemAdminOrderBinding mItemAdminOrderBinding) {
+            super(mItemAdminOrderBinding.getRoot());
+            this.mItemAdminOrderBinding = mItemAdminOrderBinding;
         }
     }
 }

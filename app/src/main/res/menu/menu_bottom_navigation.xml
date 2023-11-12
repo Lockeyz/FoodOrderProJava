@@ -6,20 +6,20 @@
         android:icon="@drawable/ic_nav_home"
         android:title="@string/home" />
 
+<!--    <item-->
+<!--        android:id="@+id/nav_cart"-->
+<!--        android:icon="@drawable/ic_nav_cart"-->
+<!--        android:title="@string/cart" />-->
+
     <item
         android:id="@+id/nav_cart"
         android:icon="@drawable/ic_nav_cart"
         android:title="@string/cart" />
 
     <item
-        android:id="@+id/nav_feedback"
-        android:icon="@drawable/ic_nav_feedback"
-        android:title="@string/feedback" />
-
-    <item
-        android:id="@+id/nav_contact"
-        android:icon="@drawable/ic_nav_contact"
-        android:title="@string/contact" />
+        android:id="@+id/nav_order"
+        android:icon="@drawable/ic_order"
+        android:title="@string/order" />
 
     <item
         android:id="@+id/nav_account"

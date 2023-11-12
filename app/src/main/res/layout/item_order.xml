@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    app:cardCornerRadius="@dimen/define_dimen_6"
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
         android:id="@+id/layout_item"
@@ -12,8 +13,6 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:layout_below="@+id/layout_confirm">
-
-
 
         <RelativeLayout
             android:layout_width="match_parent"
