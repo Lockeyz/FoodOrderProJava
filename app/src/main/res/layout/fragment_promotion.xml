@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_white_shape_border_red_corner_30"
-            android:hint="@string/hint_search_name"
+            android:hint="Tên khuyến mãi"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:padding="@dimen/define_dimen_10"
@@ -91,7 +91,7 @@
                     android:layout_marginStart="@dimen/define_dimen_10"
                     android:layout_marginTop="@dimen/define_dimen_10"
                     android:layout_marginBottom="@dimen/define_dimen_5"
-                    android:text="@string/food_suggest"
+                    android:text="Gợi ý khuyến mãi"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/text_size_normal"
                     android:textStyle="bold" />

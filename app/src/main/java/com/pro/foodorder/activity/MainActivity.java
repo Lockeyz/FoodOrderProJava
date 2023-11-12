@@ -33,9 +33,9 @@ public class MainActivity extends BaseActivity {
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
                         break;
 
-//                    case 1:
-//                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_cart).setChecked(true);
-//                        break;
+                    case 1:
+                        mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_promotion).setChecked(true);
+                        break;
 
                     case 2:
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_cart).setChecked(true);
@@ -57,9 +57,9 @@ public class MainActivity extends BaseActivity {
             if (id == R.id.nav_home) {
                 mActivityMainBinding.viewpager2.setCurrentItem(0);
             }
-//            else if (id == R.id.nav_cart) {
-//                mActivityMainBinding.viewpager2.setCurrentItem(1);
-//            }
+            else if (id == R.id.nav_promotion) {
+                mActivityMainBinding.viewpager2.setCurrentItem(1);
+            }
             else if (id == R.id.nav_cart) {
                 mActivityMainBinding.viewpager2.setCurrentItem(2);
             } else if (id == R.id.nav_order) {

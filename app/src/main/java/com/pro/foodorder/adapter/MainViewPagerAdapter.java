@@ -11,6 +11,7 @@ import com.pro.foodorder.fragment.ContactFragment;
 import com.pro.foodorder.fragment.FeedbackFragment;
 import com.pro.foodorder.fragment.HomeFragment;
 import com.pro.foodorder.fragment.OrderFragment;
+import com.pro.foodorder.fragment.PromotionFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
 
@@ -25,8 +26,8 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new HomeFragment();
 
-//            case 1:
-//                return new CartFragment();
+            case 1:
+                return new PromotionFragment();
 
             case 2:
                 return new CartFragment();

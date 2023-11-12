@@ -6,10 +6,10 @@
         android:icon="@drawable/ic_nav_home"
         android:title="@string/home" />
 
-<!--    <item-->
-<!--        android:id="@+id/nav_cart"-->
-<!--        android:icon="@drawable/ic_nav_cart"-->
-<!--        android:title="@string/cart" />-->
+    <item
+        android:id="@+id/nav_promotion"
+        android:icon="@drawable/ic_nav_promotion"
+        android:title="Khuyến mãi" />
 
     <item
         android:id="@+id/nav_cart"
@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/nav_order"
-        android:icon="@drawable/ic_order"
+        android:icon="@drawable/ic_nav_order"
         android:title="@string/order" />
 
     <item
