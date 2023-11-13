@@ -2,23 +2,16 @@ package com.pro.foodorder.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.constant.Constant;
-import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityDetailOrderBinding;
-import com.pro.foodorder.databinding.ActivityDetailOrderBinding;
-import com.pro.foodorder.listener.IOnSingleClickListener;
 import com.pro.foodorder.model.Order;
-import com.pro.foodorder.model.User;
 import com.pro.foodorder.utils.DateTimeUtils;
 
-public class DetailOrderActivity extends AppCompatActivity {
+public class OrderDetailActivity extends AppCompatActivity {
 
     private ActivityDetailOrderBinding mActivityDetailOrderBinding;
     private Order mOrder;

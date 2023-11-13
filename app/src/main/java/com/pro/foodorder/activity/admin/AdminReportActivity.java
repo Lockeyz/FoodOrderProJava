@@ -15,8 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AddShipperActivity;
-import com.pro.foodorder.activity.DetailOrderActivity;
+import com.pro.foodorder.activity.OrderDetailActivity;
 import com.pro.foodorder.adapter.RevenueAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
@@ -147,7 +146,7 @@ public class AdminReportActivity extends AppCompatActivity {
     private void detailOrderItem(Order order) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constant.KEY_INTENT_ORDER_OBJECT, order);
-        GlobalFunction.startActivity(getApplicationContext(), DetailOrderActivity.class, bundle);
+        GlobalFunction.startActivity(getApplicationContext(), OrderDetailActivity.class, bundle);
     }
 
     private int getTotalValues(List<Order> list) {

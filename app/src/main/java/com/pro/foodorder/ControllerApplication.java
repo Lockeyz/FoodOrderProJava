@@ -38,6 +38,10 @@ public class ControllerApplication extends Application {
         return mFirebaseDatabase.getReference("food");
     }
 
+    public DatabaseReference getAllPromotionDatabaseReference() {
+        return mFirebaseDatabase.getReference("promotion");
+    }
+
     public DatabaseReference getALlFeedbackDatabaseReference() {
         return mFirebaseDatabase.getReference("feedback");
     }

@@ -45,7 +45,7 @@ public class OrderFragment extends BaseFragment {
     @Override
     protected void initToolbar() {
         if (getActivity() != null) {
-            ((MainActivity) getActivity()).setToolBar(true,getString(R.string.order));
+            ((MainActivity) getActivity()).setToolBar(false,getString(R.string.order));
         }
     }
 

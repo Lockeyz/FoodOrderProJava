@@ -1,14 +1,12 @@
 package com.pro.foodorder.model;
 
-import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(tableName = "food")
-public class Food implements Serializable {
+public class Promotion implements Serializable {
 
     @PrimaryKey
     private long id;
@@ -16,10 +14,10 @@ public class Food implements Serializable {
     private String image;
     private String banner;
     private String description;
-    private int price;
-    private int sale;
-    private int count;
-    private int totalPrice;
+//    private int price;
+//    private int sale;
+//    private int count;
+//    private int totalPrice;
     private boolean popular;
     @Ignore
     private List<Image> images;
@@ -62,45 +60,6 @@ public class Food implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getRealPrice() {
-        if (sale <= 0) {
-            return price;
-        }
-        return price - (price * sale / 100);
-    }
-
-    public int getSale() {
-        return sale;
-    }
-
-    public void setSale(int sale) {
-        this.sale = sale;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     public boolean isPopular() {

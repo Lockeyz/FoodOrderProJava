@@ -1,14 +1,12 @@
 package com.pro.foodorder.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pro.foodorder.activity.DetailOrderActivity;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemRevenueBinding;
 import com.pro.foodorder.listener.IOnManageOrderListener;
