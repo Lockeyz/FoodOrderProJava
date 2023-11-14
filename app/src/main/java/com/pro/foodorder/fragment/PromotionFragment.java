@@ -70,7 +70,7 @@ public class PromotionFragment extends BaseFragment {
     @Override
     protected void initToolbar() {
         if (getActivity() != null) {
-            ((MainActivity) getActivity()).setToolBar(true, getString(R.string.home));
+            ((MainActivity) getActivity()).setToolBar(true, "Khuyến mãi");
         }
     }
 

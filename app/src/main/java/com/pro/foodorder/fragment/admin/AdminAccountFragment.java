@@ -30,7 +30,7 @@ public class AdminAccountFragment extends BaseFragment {
         fragmentAdminAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
         fragmentAdminAccountBinding.layoutReport.setOnClickListener(v -> onClickReport());
-        fragmentAdminAccountBinding.layoutReport.setOnClickListener(v -> onClickFeedback());
+        fragmentAdminAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
 
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
         fragmentAdminAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
