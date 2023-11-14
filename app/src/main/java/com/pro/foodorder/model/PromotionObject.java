@@ -12,17 +12,17 @@ public class PromotionObject implements Serializable {
     private String description;
 //    private int price;
 //    private int sale;
-//    private boolean popular;
+    private boolean popular;
     private List<Image> images;
 
     public PromotionObject(long id, String name, String image, String banner, String description,
-                           List<Image> images) {
+                           boolean popular) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.banner = banner;
         this.description = description;
-        this.images = images;
+        this.popular = popular;
     }
 
     public long getId() {
@@ -63,6 +63,14 @@ public class PromotionObject implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isPopular() {
+        return popular;
+    }
+
+    public void setPopular(boolean popular) {
+        this.popular = popular;
     }
 
     public List<Image> getImages() {

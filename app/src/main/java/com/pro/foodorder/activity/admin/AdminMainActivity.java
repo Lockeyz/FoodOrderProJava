@@ -35,7 +35,7 @@ public class AdminMainActivity extends BaseActivity {
                         break;
 
                     case 1:
-                        mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_feedback).setChecked(true);
+                        mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_promotion).setChecked(true);
                         break;
 
                     case 2:
@@ -57,7 +57,7 @@ public class AdminMainActivity extends BaseActivity {
             int id = item.getItemId();
             if (id == R.id.nav_home) {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(0);
-            } else if (id == R.id.nav_feedback) {
+            } else if (id == R.id.nav_promotion) {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(1);
             } else if (id == R.id.nav_order) {
                 mActivityAdminMainBinding.viewpager2.setCurrentItem(2);

@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+
 import com.pro.foodorder.fragment.admin.AdminAccountFragment;
-import com.pro.foodorder.fragment.admin.AdminFeedbackFragment;
 import com.pro.foodorder.fragment.admin.AdminHomeFragment;
 import com.pro.foodorder.fragment.admin.AdminOrderFragment;
+import com.pro.foodorder.fragment.admin.AdminPromotionFragment;
 import com.pro.foodorder.fragment.admin.AdminShipperFragment;
 
 public class AdminViewPagerAdapter extends FragmentStateAdapter {
@@ -24,7 +25,7 @@ public class AdminViewPagerAdapter extends FragmentStateAdapter {
                 return new AdminHomeFragment();
 
             case 1:
-                return new AdminFeedbackFragment();
+                return new AdminPromotionFragment();
 
             case 2:
                 return new AdminOrderFragment();

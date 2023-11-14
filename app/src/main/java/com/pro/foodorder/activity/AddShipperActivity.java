@@ -17,7 +17,6 @@ import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityAddFoodBinding;
 import com.pro.foodorder.databinding.ActivityAddShipperBinding;
 import com.pro.foodorder.model.Food;
-import com.pro.foodorder.model.FoodObject;
 import com.pro.foodorder.model.Image;
 import com.pro.foodorder.model.User;
 import com.pro.foodorder.utils.FirebaseUtils;

@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.admin.AdminFeedbackActivity;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.activity.ChangePasswordActivity;
@@ -29,11 +30,15 @@ public class AdminAccountFragment extends BaseFragment {
         fragmentAdminAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
         fragmentAdminAccountBinding.layoutReport.setOnClickListener(v -> onClickReport());
+        fragmentAdminAccountBinding.layoutReport.setOnClickListener(v -> onClickFeedback());
+
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
         fragmentAdminAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
 
         return fragmentAdminAccountBinding.getRoot();
     }
+
+
 
     @Override
     protected void initToolbar() {
@@ -44,6 +49,10 @@ public class AdminAccountFragment extends BaseFragment {
 
     private void onClickReport() {
         GlobalFunction.startActivity(getActivity(), AdminReportActivity.class);
+    }
+
+    private void onClickFeedback() {
+        GlobalFunction.startActivity(getActivity(), AdminFeedbackActivity.class);
     }
 
     private void onClickChangePassword() {

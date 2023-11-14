@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.activity.OrderDetailActivity;
 import com.pro.foodorder.adapter.RevenueAdapter;
 import com.pro.foodorder.constant.Constant;
@@ -29,7 +30,7 @@ import com.pro.foodorder.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminReportActivity extends AppCompatActivity {
+public class AdminReportActivity extends BaseActivity {
 
     private ActivityAdminReportBinding mActivityAdminReportBinding;
 
