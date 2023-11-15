@@ -1,12 +1,16 @@
 package com.pro.foodorder.adapter.admin;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemAdminOrderBinding;
@@ -45,11 +49,76 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
         if (order == null) {
             return;
         }
-        if (order.isCompleted()) {
-            holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.black_overlay));
-        } else {
-            holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+//        if (order.isCompleted()) {
+//            holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.black_overlay));
+//        } else {
+//            holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+//        }
+        holder.mItemAdminOrderBinding.imageCancel.setOnClickListener(v -> {
+            new AlertDialog.Builder(mContext)
+                    .setTitle("Xác nhận xóa")
+                    .setMessage("Bạn có chắc chắn muốn hủy đơn hàng này này không?")
+                    .setPositiveButton("Đồng ý", (dialogInterface, i) -> {
+                        if (mContext == null) {
+                            return;
+                        }
+                        ControllerApplication.get(mContext).getAllFoodDatabaseReference()
+                                .child(String.valueOf(order.getId())).removeValue((error, ref) ->
+                                        Toast.makeText(mContext,
+                                                "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show());
+                    })
+                    .setNegativeButton("Hủy bỏ", null)
+                    .show();
+        });
+
+        holder.mItemAdminOrderBinding.btnConfirmOrder.setOnClickListener(v -> {
+            ControllerApplication.get(mContext).getAllBookingDatabaseReference()
+                    .child(String.valueOf(order.getId())).child("state").setValue(1);
+        });
+
+        holder.mItemAdminOrderBinding.btnCancelOrder.setOnClickListener(v -> {
+            ControllerApplication.get(mContext).getAllFoodDatabaseReference()
+                    .child(String.valueOf(order.getId())).removeValue((error, ref) ->
+                            Toast.makeText(mContext,
+                                    "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show());
+        });
+
+        holder.mItemAdminOrderBinding.btnConfirmShipper.setOnClickListener(v -> {
+            ControllerApplication.get(mContext).getAllBookingDatabaseReference()
+                    .child(String.valueOf(order.getId())).child("state").setValue(3);
+        });
+
+        holder.mItemAdminOrderBinding.btnCancelShipper.setOnClickListener(v -> {
+            ControllerApplication.get(mContext).getAllBookingDatabaseReference()
+                    .child(String.valueOf(order.getId())).child("state").setValue(1);
+        });
+
+        if (order.getState() == 0){
+            holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.VISIBLE);
+            holder.mItemAdminOrderBinding.tvState.setText("ĐƠN HÀNG mới chờ được xác nhận.");
+        } else if (order.getState() == 1) {
+            holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.VISIBLE);
+            holder.mItemAdminOrderBinding.tvState.setText("Chờ shipper nhận đơn hàng.");
+        } else if (order.getState() == 2) {
+            holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.VISIBLE);
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.tvState.setText("Có SHIPPER đã nhận đơn hàng.");
+        } else if (order.getState() == 3) {
+            holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.tvState.setText("Đơn hàng đang được giao.");
+        } else if (order.getState() == 4) {
+            holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
+            holder.mItemAdminOrderBinding.tvState.setText("Đơn hàng được giao thành công!");
         }
+
+
         holder.mItemAdminOrderBinding.chbStatus.setChecked(order.isCompleted());
         holder.mItemAdminOrderBinding.tvId.setText(String.valueOf(order.getId()));
         holder.mItemAdminOrderBinding.tvEmail.setText(order.getEmail());

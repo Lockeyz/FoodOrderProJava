@@ -1,6 +1,7 @@
 package com.pro.foodorder.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -92,6 +94,11 @@ public class OrderFragment extends BaseFragment {
                             return;
                         }
                         for (int i = 0; i < mListOrder.size(); i++) {
+                            if (order.getState() == 3 && order.isCompleted() == true){
+
+                                mListOrder.remove(i);
+                                break;
+                            }
                             if (order.getId() == mListOrder.get(i).getId()) {
                                 mListOrder.set(i, order);
                                 break;
@@ -128,11 +135,23 @@ public class OrderFragment extends BaseFragment {
     }
 
     private void handleCancelOrder(Order order) {
-//        if (getActivity() == null) {
-//            return;
-//        }
-//        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
-//                .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
+        if (getActivity() == null) {
+            return;
+        }
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Xác nhận xóa")
+                .setMessage("Bạn có chắc chắn muốn hủy đơn hàng này này không?")
+                .setPositiveButton("Đồng ý", (dialogInterface, i) -> {
+                    if (getActivity() == null) {
+                        return;
+                    }
+                    ControllerApplication.get(getActivity()).getAllOrderDatabaseReference()
+                            .child(String.valueOf(order.getId())).removeValue((error, ref) ->
+                                    Toast.makeText(getActivity(),
+                                            "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show());
+                })
+                .setNegativeButton("Hủy bỏ", null)
+                .show();
     }
 
     @Override

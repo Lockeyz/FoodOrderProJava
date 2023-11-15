@@ -1,12 +1,16 @@
 package com.pro.foodorder.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemUserOrderBinding;
@@ -52,6 +56,22 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
 //            holder.mItemUserOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
 //        }
 //        holder.mItemUserOrderBinding.chbStatus.setChecked(order.isCompleted());
+
+
+        if (order.getState() == 0){
+            holder.mItemUserOrderBinding.tvState.setText("Đơn hàng đang chờ được xác nhận.");
+            holder.mItemUserOrderBinding.imageCancel.setVisibility(View.VISIBLE);
+        } else if (order.getState() == 1) {
+            holder.mItemUserOrderBinding.tvState.setText("Đơn hàng đang được chuẩn bị.");
+            holder.mItemUserOrderBinding.imageCancel.setVisibility(View.GONE);
+        }else if (order.getState() == 2) {
+            holder.mItemUserOrderBinding.tvState.setText("Đơn hàng đang được chuẩn bị.");
+        }else if (order.getState() == 3) {
+            holder.mItemUserOrderBinding.tvState.setText("Đơn hàng đang được giao.");
+        }else if (order.getState() == 4) {
+            holder.mItemUserOrderBinding.tvState.setText("Đơn hàng được giao thành công.");
+        }
+        
         holder.mItemUserOrderBinding.tvId.setText(String.valueOf(order.getId()));
         holder.mItemUserOrderBinding.tvEmail.setText(order.getEmail());
         holder.mItemUserOrderBinding.tvName.setText(order.getName());
@@ -68,10 +88,8 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
             paymentMethod = Constant.PAYMENT_METHOD_CASH;
         }
         holder.mItemUserOrderBinding.tvPayment.setText(paymentMethod);
-        holder.mItemUserOrderBinding.btnCancel.setOnClickListener(
+        holder.mItemUserOrderBinding.imageCancel.setOnClickListener(
                 v -> mICancelOrderListener.cancelOrder(order));
-//        holder.mItemUserOrderBinding.chbStatus.setOnClickListener(
-//                v -> mICancelOrderListener.updateStatus(order));
     }
 
     @Override

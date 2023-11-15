@@ -20,7 +20,7 @@ import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 
 import com.pro.foodorder.activity.shipper.ShipperMainActivity;
-import com.pro.foodorder.adapter.admin.AdminOrderAdapter;
+import com.pro.foodorder.adapter.shipper.ShipperOrderAdapter;
 import com.pro.foodorder.databinding.FragmentShipperOrderBinding;
 import com.pro.foodorder.fragment.BaseFragment;
 import com.pro.foodorder.model.Order;
@@ -33,7 +33,7 @@ public class ShipperOrderFragment extends BaseFragment {
 
     private FragmentShipperOrderBinding mFragmentShipperOrderBinding;
     private List<Order> mListOrder;
-    private AdminOrderAdapter mAdminOrderAdapter;
+    private ShipperOrderAdapter mShipperOrderAdapter;
 
 
     @Nullable
@@ -61,9 +61,9 @@ public class ShipperOrderFragment extends BaseFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mFragmentShipperOrderBinding.rcvOrder.setLayoutManager(linearLayoutManager);
         mListOrder = new ArrayList<>();
-        mAdminOrderAdapter = new AdminOrderAdapter(getActivity(), mListOrder,
+        mShipperOrderAdapter = new ShipperOrderAdapter(getActivity(), mListOrder,
                 this::handleUpdateStatusOrder);
-        mFragmentShipperOrderBinding.rcvOrder.setAdapter(mAdminOrderAdapter);
+        mFragmentShipperOrderBinding.rcvOrder.setAdapter(mShipperOrderAdapter);
     }
 
     public void getListOrders() {
@@ -76,11 +76,13 @@ public class ShipperOrderFragment extends BaseFragment {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
                         Order order = dataSnapshot.getValue(Order.class);
-                        if (order == null || mListOrder == null || mAdminOrderAdapter == null) {
+                        if (order == null || mListOrder == null || mShipperOrderAdapter == null) {
                             return;
                         }
-                        mListOrder.add(0, order);
-                        mAdminOrderAdapter.notifyDataSetChanged();
+                        if (order.isCompleted() == false){
+                            mListOrder.add(0, order);
+                            mShipperOrderAdapter.notifyDataSetChanged();
+                        }
                     }
 
                     @SuppressLint("NotifyDataSetChanged")
@@ -88,16 +90,21 @@ public class ShipperOrderFragment extends BaseFragment {
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
                         Order order = dataSnapshot.getValue(Order.class);
                         if (order == null || mListOrder == null
-                                || mListOrder.isEmpty() || mAdminOrderAdapter == null) {
+                                || mListOrder.isEmpty() || mShipperOrderAdapter == null) {
                             return;
                         }
                         for (int i = 0; i < mListOrder.size(); i++) {
+                            if (order.getState() == 3 && order.isCompleted() == true){
+                                Toast.makeText(getContext(), "Đơn hàng đã được thanh toán", Toast.LENGTH_SHORT).show();
+                                mListOrder.remove(i);
+                                break;
+                            }
                             if (order.getId() == mListOrder.get(i).getId()) {
                                 mListOrder.set(i, order);
                                 break;
                             }
                         }
-                        mAdminOrderAdapter.notifyDataSetChanged();
+                        mShipperOrderAdapter.notifyDataSetChanged();
                     }
 
                     @SuppressLint("NotifyDataSetChanged")
@@ -105,7 +112,7 @@ public class ShipperOrderFragment extends BaseFragment {
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         Order order = dataSnapshot.getValue(Order.class);
                         if (order == null || mListOrder == null
-                                || mListOrder.isEmpty() || mAdminOrderAdapter == null) {
+                                || mListOrder.isEmpty() || mShipperOrderAdapter == null) {
                             return;
                         }
                         for (Order orderObject : mListOrder) {
@@ -114,7 +121,7 @@ public class ShipperOrderFragment extends BaseFragment {
                                 break;
                             }
                         }
-                        mAdminOrderAdapter.notifyDataSetChanged();
+                        mShipperOrderAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -133,13 +140,16 @@ public class ShipperOrderFragment extends BaseFragment {
         }
         ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                 .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
+        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
+                .child(String.valueOf(order.getId())).child("state").setValue(4);
+
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mAdminOrderAdapter != null) {
-            mAdminOrderAdapter.release();
+        if (mShipperOrderAdapter != null) {
+            mShipperOrderAdapter.release();
         }
     }
 }

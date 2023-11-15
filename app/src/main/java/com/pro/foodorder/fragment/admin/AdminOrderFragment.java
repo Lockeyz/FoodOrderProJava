@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,6 +89,11 @@ public class AdminOrderFragment extends BaseFragment {
                             return;
                         }
                         for (int i = 0; i < mListOrder.size(); i++) {
+                            if (order.getState() == 3 && order.isCompleted() == true){
+                                Toast.makeText(getContext(), "Đơn hàng đã được thanh toán", Toast.LENGTH_SHORT).show();
+                                mListOrder.remove(i);
+                                break;
+                            }
                             if (order.getId() == mListOrder.get(i).getId()) {
                                 mListOrder.set(i, order);
                                 break;
