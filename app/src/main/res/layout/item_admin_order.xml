@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    app:cardCornerRadius="@dimen/define_dimen_6"
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
         android:id="@+id/layout_item"
@@ -13,44 +14,60 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/layout_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layout_confirm"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16dp">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Xác nhận đơn hàng?" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Xác nhận đơn hàng?" />-->
 
-            <Button
-                android:id="@+id/btn_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xác nhận" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="2">-->
 
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hủy bỏ" />
+<!--                <Button-->
+<!--                    android:id="@+id/btn_confirm"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_main_corner_8"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:text="Xác nhận" />-->
 
-            <TextView
-                android:id="@+id/tv_state"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Trạng thái: Chờ xác nhận" />
+<!--                <Button-->
+<!--                    android:id="@+id/btn_cancel"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/bg_main_corner_8"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:text="Hủy bỏ" />-->
+<!--            </LinearLayout>-->
 
-            <TextView
-                android:id="@+id/tv_shipper"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Shipper" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_state"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Trạng thái: Chờ xác nhận" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_shipper"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Shipper" />-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -210,32 +227,32 @@
                 android:textSize="@dimen/text_size_small" />
         </RelativeLayout>
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_20"
-            android:orientation="horizontal">
+<!--        <RadioGroup-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/define_dimen_20"-->
+<!--            android:orientation="horizontal">-->
 
-            <RadioButton
-                android:id="@+id/rdb_admin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="Chờ xác nhận" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_admin"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:text="Chờ xác nhận" />-->
 
-            <RadioButton
-                android:id="@+id/rdb_shipper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đang chuẩn bị" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_shipper"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Đang chuẩn bị" />-->
 
-            <RadioButton
-                android:id="@+id/rdb_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Đang giao" />
-        </RadioGroup>
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_user"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:text="Đang giao" />-->
+<!--        </RadioGroup>-->
 
         <View
             android:layout_width="match_parent"

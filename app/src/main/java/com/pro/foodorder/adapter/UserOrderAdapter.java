@@ -19,16 +19,16 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
 
     private Context mContext;
     private final List<Order> mListOrder;
-    private final UserOrderAdapter.IUpdateStatusListener mIUpdateStatusListener;
+    private final ICancelOrderListener mICancelOrderListener;
 
-    public interface IUpdateStatusListener {
-        void updateStatus(Order order);
+    public interface ICancelOrderListener {
+        void cancelOrder(Order order);
     }
 
-    public UserOrderAdapter(Context mContext, List<Order> mListOrder, UserOrderAdapter.IUpdateStatusListener listener) {
+    public UserOrderAdapter(Context mContext, List<Order> mListOrder, ICancelOrderListener listener) {
         this.mContext = mContext;
         this.mListOrder = mListOrder;
-        this.mIUpdateStatusListener = listener;
+        this.mICancelOrderListener = listener;
     }
 
     @NonNull
@@ -45,12 +45,13 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
         if (order == null) {
             return;
         }
-        if (order.isCompleted()) {
-            holder.mItemUserOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.black_overlay));
-        } else {
-            holder.mItemUserOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
-        }
-        holder.mItemUserOrderBinding.chbStatus.setChecked(order.isCompleted());
+//        if (order.isCompleted()) {
+//            holder.mItemUserOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.black_overlay));
+//        }
+//        else {
+//            holder.mItemUserOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+//        }
+//        holder.mItemUserOrderBinding.chbStatus.setChecked(order.isCompleted());
         holder.mItemUserOrderBinding.tvId.setText(String.valueOf(order.getId()));
         holder.mItemUserOrderBinding.tvEmail.setText(order.getEmail());
         holder.mItemUserOrderBinding.tvName.setText(order.getName());
@@ -67,8 +68,10 @@ public class UserOrderAdapter extends RecyclerView.Adapter<UserOrderAdapter.User
             paymentMethod = Constant.PAYMENT_METHOD_CASH;
         }
         holder.mItemUserOrderBinding.tvPayment.setText(paymentMethod);
-        holder.mItemUserOrderBinding.chbStatus.setOnClickListener(
-                v -> mIUpdateStatusListener.updateStatus(order));
+        holder.mItemUserOrderBinding.btnCancel.setOnClickListener(
+                v -> mICancelOrderListener.cancelOrder(order));
+//        holder.mItemUserOrderBinding.chbStatus.setOnClickListener(
+//                v -> mICancelOrderListener.updateStatus(order));
     }
 
     @Override

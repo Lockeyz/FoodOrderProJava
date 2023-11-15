@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,7 @@ import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.adapter.UserOrderAdapter;
 import com.pro.foodorder.databinding.FragmentOrderBinding;
 import com.pro.foodorder.model.Order;
+import com.pro.foodorder.prefs.DataStoreManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,7 @@ public class OrderFragment extends BaseFragment {
         mFragmentOrderBinding.rcvOrder.setLayoutManager(linearLayoutManager);
         mListOrder = new ArrayList<>();
         mUserOrderAdapter = new UserOrderAdapter(getActivity(), mListOrder,
-                this::handleUpdateStatusOrder);
+                this::handleCancelOrder);
         mFragmentOrderBinding.rcvOrder.setAdapter(mUserOrderAdapter);
     }
 
@@ -74,8 +76,11 @@ public class OrderFragment extends BaseFragment {
                         if (order == null || mListOrder == null || mUserOrderAdapter == null) {
                             return;
                         }
-                        mListOrder.add(0, order);
-                        mUserOrderAdapter.notifyDataSetChanged();
+                        String userId = FirebaseAuth.getInstance().getUid();
+                        if (order.isCompleted() == false && order.getUserId().contains(userId)){
+                            mListOrder.add(0, order);
+                            mUserOrderAdapter.notifyDataSetChanged();
+                        }
                     }
 
                     @SuppressLint("NotifyDataSetChanged")
@@ -122,12 +127,12 @@ public class OrderFragment extends BaseFragment {
                 });
     }
 
-    private void handleUpdateStatusOrder(Order order) {
-        if (getActivity() == null) {
-            return;
-        }
-        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
-                .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
+    private void handleCancelOrder(Order order) {
+//        if (getActivity() == null) {
+//            return;
+//        }
+//        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
+//                .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
     }
 
     @Override

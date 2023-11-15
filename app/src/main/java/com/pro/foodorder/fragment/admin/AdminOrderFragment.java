@@ -72,8 +72,11 @@ public class AdminOrderFragment extends BaseFragment {
                         if (order == null || mListOrder == null || mAdminOrderAdapter == null) {
                             return;
                         }
-                        mListOrder.add(0, order);
-                        mAdminOrderAdapter.notifyDataSetChanged();
+                        if (order.isCompleted()==false){
+                            mListOrder.add(0, order);
+                            mAdminOrderAdapter.notifyDataSetChanged();
+                        }
+
                     }
 
                     @SuppressLint("NotifyDataSetChanged")

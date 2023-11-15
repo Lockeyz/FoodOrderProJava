@@ -60,7 +60,7 @@ public class OrderHistoryActivity extends BaseActivity {
                         }
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Order order = dataSnapshot.getValue(Order.class);
-                            if (order != null) {
+                            if (order != null && order.isCompleted() == true) {
                                 String strEmail = DataStoreManager.getUser().getEmail();
                                 if (strEmail.equalsIgnoreCase(order.getEmail())) {
                                     mListOrder.add(0, order);

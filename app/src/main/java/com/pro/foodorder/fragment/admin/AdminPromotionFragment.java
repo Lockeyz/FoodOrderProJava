@@ -59,7 +59,7 @@ public class AdminPromotionFragment extends BaseFragment {
     @Override
     protected void initToolbar() {
         if (getActivity() != null) {
-            ((AdminMainActivity) getActivity()).setToolBar(getString(R.string.home));
+            ((AdminMainActivity) getActivity()).setToolBar("Khuyến mãi");
         }
     }
 

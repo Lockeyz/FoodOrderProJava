@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.MainActivity;
@@ -27,6 +29,7 @@ import com.pro.foodorder.event.ReloadListCartEvent;
 import com.pro.foodorder.model.Food;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.prefs.DataStoreManager;
+import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -185,9 +188,12 @@ public class CartFragment extends BaseFragment {
                 GlobalFunction.showToastMessage(getActivity(), getString(R.string.message_enter_infor_order));
             } else {
                 long id = System.currentTimeMillis();
+                String userId = FirebaseAuth.getInstance().getUid();
                 String strEmail = DataStoreManager.getUser().getEmail();
-                Order order = new Order(id, strName, strEmail, strPhone, strAddress,
-                        mAmount, getStringListFoodsOrder(), Constant.TYPE_PAYMENT_CASH, false);
+                Order order = new Order(id, userId, strName, strEmail, strPhone, strAddress,
+                        mAmount, getStringListFoodsOrder(), Constant.TYPE_PAYMENT_CASH,
+                        0, false);
+
                 ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                         .child(String.valueOf(id))
                         .setValue(order, (error1, ref1) -> {

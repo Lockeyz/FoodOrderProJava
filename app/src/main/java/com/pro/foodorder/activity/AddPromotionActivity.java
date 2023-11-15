@@ -161,7 +161,7 @@ public class AddPromotionActivity extends BaseActivity {
         if (!listImages.isEmpty()) {
             promotion.setImages(listImages);
         }
-        ControllerApplication.get(this).getAllFoodDatabaseReference()
+        ControllerApplication.get(this).getAllPromotionDatabaseReference()
                 .child(String.valueOf(promotionId)).setValue(promotion, (error, ref) -> {
                     showProgressDialog(false);
                     mActivityAddPromotionBinding.edtName.setText("");
