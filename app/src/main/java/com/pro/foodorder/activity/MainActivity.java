@@ -1,11 +1,16 @@
 package com.pro.foodorder.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.adapter.MainViewPagerAdapter;
 import com.pro.foodorder.databinding.ActivityMainBinding;
@@ -28,6 +33,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+
                 switch (position) {
                     case 0:
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
@@ -69,6 +75,8 @@ public class MainActivity extends BaseActivity {
             }
             return true;
         });
+
+        getFCMToken();
     }
 
     @Override
@@ -94,5 +102,17 @@ public class MainActivity extends BaseActivity {
         }
         mActivityMainBinding.toolbar.layoutToolbar.setVisibility(View.VISIBLE);
         mActivityMainBinding.toolbar.tvTitle.setText(title);
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                String token = task.getResult();
+                Log.i("My token", token);
+                ControllerApplication.get(this).getAllUserDatabaseReference()
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child("fcmToken").setValue(token);
+            }
+        });
     }
 }

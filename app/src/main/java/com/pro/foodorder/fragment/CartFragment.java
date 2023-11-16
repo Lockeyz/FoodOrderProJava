@@ -13,9 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
@@ -28,6 +31,7 @@ import com.pro.foodorder.databinding.FragmentCartBinding;
 import com.pro.foodorder.event.ReloadListCartEvent;
 import com.pro.foodorder.model.Food;
 import com.pro.foodorder.model.Order;
+import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
 import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
@@ -35,9 +39,19 @@ import com.pro.foodorder.utils.StringUtil;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CartFragment extends BaseFragment {
 
@@ -203,6 +217,9 @@ public class CartFragment extends BaseFragment {
 
                             FoodDatabase.getInstance(getActivity()).foodDAO().deleteAllFood();
                             clearCart();
+
+                            String orderId = id + "";
+                            sendOrderNotification(orderId);
                         });
             }
         });
@@ -225,6 +242,57 @@ public class CartFragment extends BaseFragment {
             }
         }
         return result;
+    }
+
+    void sendOrderNotification(String orderId) {
+        String message = "Đơn hàng " + orderId + " đang chờ xác nhận!";
+        ControllerApplication.get(getContext()).getAllAdminDatabaseReference().get()
+                .addOnCompleteListener(task -> {
+                    for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                        User admin = dataSnapshot.getValue(User.class);
+                        try {
+                            JSONObject notificationObj = new JSONObject();
+                            notificationObj.put("title", "Đơn hàng mới");
+                            notificationObj.put("body", message);
+
+                            JSONObject dataObj = new JSONObject();
+                            dataObj.put("orderId", orderId);
+
+                            JSONObject jsonObject = new JSONObject();
+                            jsonObject.put("notification", notificationObj);
+                            jsonObject.put("data", dataObj);
+                            jsonObject.put("to", admin.getFcmToken());
+
+                            callApi(jsonObject);
+
+                        } catch (Exception e){
+
+                        }
+                    }
+                });
+    }
+
+    void callApi(JSONObject jsonObject){
+        MediaType JSON = MediaType.get("application/json; charset=utf-8");
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://fcm.googleapis.com/fcm/send";
+        RequestBody body = RequestBody.create(jsonObject.toString(), JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .header("Authorization", "Bearer AAAALciG5DQ:APA91bHWh1qvk60tjTneXYhYjXtFYJYRz3zKhhKI3k9bM4vhkBApQob0ss333dl4d0De8oulLE0RoLCSwLVNQwJDwFwsnqId98YNiQTVaNwHP-eEAofpvPSPvX0rh0y3hD4w-titsZCj")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+            }
+        });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

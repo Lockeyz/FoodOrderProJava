@@ -1,11 +1,15 @@
 package com.pro.foodorder.activity.admin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.adapter.admin.AdminViewPagerAdapter;
@@ -29,6 +33,10 @@ public class AdminMainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                if (getIntent().getStringExtra("orderId")!=null){
+                    mActivityAdminMainBinding.viewpager2.setCurrentItem(2);
+                    position = 2;
+                }
                 switch (position) {
                     case 0:
                         mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
@@ -68,6 +76,9 @@ public class AdminMainActivity extends BaseActivity {
             }
             return true;
         });
+
+        String m = getIntent().getStringExtra("userId");
+        getFCMToken();
     }
 
     @Override
@@ -89,5 +100,17 @@ public class AdminMainActivity extends BaseActivity {
     public void setToolBar(String title) {
         mActivityAdminMainBinding.toolbar.layoutToolbar.setVisibility(View.VISIBLE);
         mActivityAdminMainBinding.toolbar.tvTitle.setText(title);
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                String token = task.getResult();
+                Log.i("My token", token);
+                ControllerApplication.get(this).getAllAdminDatabaseReference()
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child("fcmToken").setValue(token);
+            }
+        });
     }
 }

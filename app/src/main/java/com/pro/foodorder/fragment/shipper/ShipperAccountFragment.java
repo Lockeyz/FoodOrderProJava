@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.ChangePasswordActivity;
 import com.pro.foodorder.activity.admin.AdminReportActivity;
@@ -62,9 +63,13 @@ public class ShipperAccountFragment extends BaseFragment {
         if (getActivity() == null) {
             return;
         }
-        FirebaseAuth.getInstance().signOut();
-        DataStoreManager.setUser(null);
-        GlobalFunction.startActivity(getActivity(), SignInActivity.class);
-        getActivity().finishAffinity();
+        FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                FirebaseAuth.getInstance().signOut();
+                DataStoreManager.setUser(null);
+                GlobalFunction.startActivity(getActivity(), SignInActivity.class);
+                getActivity().finishAffinity();
+            }
+        });
     }
 }

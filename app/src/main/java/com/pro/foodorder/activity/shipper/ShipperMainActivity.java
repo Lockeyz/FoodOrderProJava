@@ -3,9 +3,13 @@ package com.pro.foodorder.activity.shipper;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.adapter.shipper.ShipperViewPagerAdapter;
@@ -29,6 +33,10 @@ public class ShipperMainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                if (getIntent().getStringExtra("orderId")!=null){
+                    mActivityShipperMainBinding.viewpager2.setCurrentItem(0);
+                    position = 2;
+                }
                 switch (position) {
                     case 0:
                         mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_order).setChecked(true);
@@ -61,6 +69,8 @@ public class ShipperMainActivity extends BaseActivity {
             }
             return true;
         });
+
+        getFCMToken();
     }
 
     @Override
@@ -82,5 +92,17 @@ public class ShipperMainActivity extends BaseActivity {
     public void setToolBar(String title) {
         mActivityShipperMainBinding.toolbar.layoutToolbar.setVisibility(View.VISIBLE);
         mActivityShipperMainBinding.toolbar.tvTitle.setText(title);
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                String token = task.getResult();
+                Log.i("My token", token);
+                ControllerApplication.get(this).getAllShipperDatabaseReference()
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child("fcmToken").setValue(token);
+            }
+        });
     }
 }

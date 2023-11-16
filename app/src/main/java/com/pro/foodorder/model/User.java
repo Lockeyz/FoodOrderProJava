@@ -1,17 +1,13 @@
 package com.pro.foodorder.model;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import com.google.gson.Gson;
 
 import java.io.Serializable;
 
-@Entity(tableName = "user")
 public class User implements Serializable {
 
-    @PrimaryKey
+
     private String userId;
     private String email;
     private String password;
@@ -23,6 +19,8 @@ public class User implements Serializable {
 
     private boolean isAdmin;
     private boolean isShipper;
+
+    private String fcmToken;
 
     public User() {
     }
@@ -123,6 +121,14 @@ public class User implements Serializable {
 
     public void setShipper(boolean shipper) {
         isShipper = shipper;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 
     public String toJSon() {
