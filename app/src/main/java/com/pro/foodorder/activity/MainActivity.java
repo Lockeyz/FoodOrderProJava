@@ -33,7 +33,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-
                 switch (position) {
                     case 0:
                         mActivityMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
