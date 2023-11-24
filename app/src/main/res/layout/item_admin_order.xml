@@ -242,6 +242,13 @@
                 android:layout_toEndOf="@+id/label_address"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
+
+            <ImageButton
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_map"
+                android:layout_alignParentEnd="true"/>
         </RelativeLayout>
 
         <RelativeLayout

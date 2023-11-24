@@ -33,10 +33,6 @@ public class ShipperMainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                if (getIntent().getStringExtra("orderId")!=null){
-                    mActivityShipperMainBinding.viewpager2.setCurrentItem(0);
-                    position = 2;
-                }
                 switch (position) {
                     case 0:
                         mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_order).setChecked(true);
@@ -55,6 +51,10 @@ public class ShipperMainActivity extends BaseActivity {
                 }
             }
         });
+
+        if (getIntent().getStringExtra("orderId")!=null){
+            mActivityShipperMainBinding.viewpager2.setCurrentItem(0);
+        }
 
         mActivityShipperMainBinding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();

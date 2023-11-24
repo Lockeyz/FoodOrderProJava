@@ -33,10 +33,6 @@ public class AdminMainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                if (getIntent().getStringExtra("orderId")!=null){
-                    mActivityAdminMainBinding.viewpager2.setCurrentItem(2);
-                    position = 2;
-                }
                 switch (position) {
                     case 0:
                         mActivityAdminMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
@@ -60,6 +56,10 @@ public class AdminMainActivity extends BaseActivity {
                 }
             }
         });
+
+        if (getIntent().getStringExtra("orderId")!=null){
+                    mActivityAdminMainBinding.viewpager2.setCurrentItem(2);
+                }
 
         mActivityAdminMainBinding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();

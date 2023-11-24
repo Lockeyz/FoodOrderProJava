@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.MapsActivity;
 import com.pro.foodorder.constant.Constant;
+import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ItemAdminOrderBinding;
 import com.pro.foodorder.model.Order;
+import com.pro.foodorder.prefs.DataStoreManager;
 import com.pro.foodorder.utils.DateTimeUtils;
 
 import java.util.List;
@@ -91,6 +94,10 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
         holder.mItemAdminOrderBinding.btnCancelShipper.setOnClickListener(v -> {
             ControllerApplication.get(mContext).getAllBookingDatabaseReference()
                     .child(String.valueOf(order.getId())).child("state").setValue(1);
+        });
+
+        holder.mItemAdminOrderBinding.btnMap.setOnClickListener(v -> {
+            GlobalFunction.startActivity(mContext, MapsActivity.class);
         });
 
         if (order.getState() == 0){
