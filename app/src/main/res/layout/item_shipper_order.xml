@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="@color/black_overlay">
+        android:background="@color/black_overlay2">
 
         <RelativeLayout
             android:id="@+id/layout_cancel"
@@ -97,6 +97,35 @@
             android:layout_marginTop="@dimen/define_dimen_10">
 
             <TextView
+                android:id="@+id/label_name"
+                android:layout_width="@dimen/define_dimen_100"
+                android:layout_height="wrap_content"
+                android:text="Khách hàng:"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/define_dimen_5"
+                android:layout_toEndOf="@+id/label_name"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small" />
+
+            <ImageButton
+                android:id="@+id/btn_customer_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_message"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_10">
+
+            <TextView
                 android:id="@+id/label_email"
                 android:layout_width="@dimen/define_dimen_100"
                 android:layout_height="wrap_content"
@@ -109,28 +138,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/define_dimen_5"
                 android:layout_toEndOf="@+id/label_email"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_10">
-
-            <TextView
-                android:id="@+id/label_name"
-                android:layout_width="@dimen/define_dimen_100"
-                android:layout_height="wrap_content"
-                android:text="@string/label_name"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/define_dimen_5"
-                android:layout_toEndOf="@+id/label_name"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
         </RelativeLayout>
@@ -177,8 +184,16 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/define_dimen_5"
                 android:layout_toEndOf="@+id/label_address"
+                android:layout_toStartOf="@+id/btn_map"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
+
+            <ImageButton
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_map"
+                android:layout_alignParentEnd="true"/>
         </RelativeLayout>
 
         <RelativeLayout

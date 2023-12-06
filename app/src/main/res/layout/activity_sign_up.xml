@@ -30,10 +30,20 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edt_email"
+            android:id="@+id/edt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_20"
+            android:hint="@string/hint_name"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/hint_email"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
@@ -55,7 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_20"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/rdb_admin"

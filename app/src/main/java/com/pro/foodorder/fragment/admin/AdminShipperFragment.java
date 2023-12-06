@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.Editable;
@@ -24,20 +23,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AddFoodActivity;
-import com.pro.foodorder.activity.AddShipperActivity;
+import com.pro.foodorder.activity.admin.AddShipperActivity;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
-import com.pro.foodorder.adapter.admin.AdminFoodAdapter;
 import com.pro.foodorder.adapter.admin.AdminShipperAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.FragmentAdminShipperBinding;
 import com.pro.foodorder.fragment.BaseFragment;
-import com.pro.foodorder.listener.IOnManageFoodListener;
 import com.pro.foodorder.listener.IOnManageUserListener;
-import com.pro.foodorder.model.Food;
 import com.pro.foodorder.model.User;
-import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
 
 import java.util.ArrayList;

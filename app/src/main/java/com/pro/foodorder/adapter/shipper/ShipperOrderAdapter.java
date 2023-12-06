@@ -1,17 +1,21 @@
 package com.pro.foodorder.adapter.shipper;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.ControllerApplication;
+import com.pro.foodorder.activity.MapsActivity;
 import com.pro.foodorder.adapter.admin.AdminOrderAdapter;
 import com.pro.foodorder.constant.Constant;
+import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ItemShipperOrderBinding;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.utils.DateTimeUtils;
@@ -57,16 +61,38 @@ public class ShipperOrderAdapter extends RecyclerView.Adapter<ShipperOrderAdapte
                     .setValue(FirebaseAuth.getInstance().getUid());
         });
 
+        holder.mItemShipperOrderBinding.imageCancel.setOnClickListener(v -> {
+            new AlertDialog.Builder(mContext)
+                    .setTitle("Hủy nhận đơn hàng")
+                    .setMessage("Bạn có chắc chắn muốn hủy nhận đơn hàng này này không?")
+                    .setPositiveButton("Đồng ý", (dialogInterface, i) -> {
+                        if (mContext == null) {
+                            return;
+                        }
+                        ControllerApplication.get(mContext).getAllBookingDatabaseReference()
+                                .child(String.valueOf(order.getId())).child("state").setValue(1);
+                        Toast.makeText(mContext, "Hủy nhận đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Hủy bỏ", null)
+                    .show();
+        });
+
+        holder.mItemShipperOrderBinding.btnMap.setOnClickListener(v -> {
+            GlobalFunction.startActivity(mContext, MapsActivity.class);
+        });
+
         if (order.getState() == 0){
-            holder.mItemShipperOrderBinding.tvState.setText("Đơn hàng mới chờ được xác nhận.");
+            holder.mItemShipperOrderBinding.tvState.setText("ĐƠN HÀNG MỚI chờ được xác nhận.");
             holder.mItemShipperOrderBinding.chbStatus.setVisibility(View.GONE);
         } else if (order.getState() == 1) {
             holder.mItemShipperOrderBinding.layoutConfirmOrder.setVisibility(View.VISIBLE);
             holder.mItemShipperOrderBinding.layoutCancel.setVisibility(View.GONE);
-            holder.mItemShipperOrderBinding.tvState.setText("ĐƠN HÀNG mới đã sẵn sàng.");
+            holder.mItemShipperOrderBinding.chbStatus.setVisibility(View.GONE);
+            holder.mItemShipperOrderBinding.tvState.setText("ĐƠN HÀNG MỚI đã sẵn sàng.");
         } else if (order.getState() == 2) {
             holder.mItemShipperOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
             holder.mItemShipperOrderBinding.layoutCancel.setVisibility(View.VISIBLE);
+            holder.mItemShipperOrderBinding.chbStatus.setVisibility(View.GONE);
             holder.mItemShipperOrderBinding.tvState.setText("Nhận chuyển đơn hàng. Chờ xác nhận.");
         } else if (order.getState() == 3) {
             holder.mItemShipperOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
@@ -76,6 +102,7 @@ public class ShipperOrderAdapter extends RecyclerView.Adapter<ShipperOrderAdapte
         }else if (order.getState() == 4) {
             holder.mItemShipperOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
             holder.mItemShipperOrderBinding.layoutCancel.setVisibility(View.GONE);
+            holder.mItemShipperOrderBinding.chbStatus.setVisibility(View.VISIBLE);
             holder.mItemShipperOrderBinding.tvState.setText("Đơn hàng được giao thành công!");
         }
 

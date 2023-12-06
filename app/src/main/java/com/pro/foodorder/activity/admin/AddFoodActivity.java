@@ -1,4 +1,4 @@
-package com.pro.foodorder.activity;
+package com.pro.foodorder.activity.admin;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityAddFoodBinding;

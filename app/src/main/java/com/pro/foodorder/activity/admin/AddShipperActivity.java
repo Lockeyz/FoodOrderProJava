@@ -1,30 +1,23 @@
-package com.pro.foodorder.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.pro.foodorder.activity.admin;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
-import com.pro.foodorder.databinding.ActivityAddFoodBinding;
 import com.pro.foodorder.databinding.ActivityAddShipperBinding;
-import com.pro.foodorder.model.Food;
-import com.pro.foodorder.model.Image;
 import com.pro.foodorder.model.User;
 import com.pro.foodorder.utils.FirebaseUtils;
 import com.pro.foodorder.utils.StringUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AddShipperActivity extends BaseActivity {
@@ -59,7 +52,6 @@ public class AddShipperActivity extends BaseActivity {
     private void initToolbar() {
         mActivityAddShipperBinding.toolbar.imgBack.setVisibility(View.VISIBLE);
         mActivityAddShipperBinding.toolbar.imgCart.setVisibility(View.GONE);
-
         mActivityAddShipperBinding.toolbar.imgBack.setOnClickListener(v -> onBackPressed());
     }
 
@@ -67,6 +59,9 @@ public class AddShipperActivity extends BaseActivity {
         if (isUpdate) {
             mActivityAddShipperBinding.toolbar.tvTitle.setText("Chỉnh sửa tài khoản shipper");
             mActivityAddShipperBinding.btnAddOrEdit.setText(getString(R.string.action_edit));
+            mActivityAddShipperBinding.edtEmail.setInputType(View.AUTOFILL_TYPE_NONE);
+            mActivityAddShipperBinding.layoutPassword.setVisibility(View.GONE);
+
 
             mActivityAddShipperBinding.edtName.setText(mShipper.getName());
             mActivityAddShipperBinding.edtEmail.setText(mShipper.getEmail());
@@ -78,6 +73,7 @@ public class AddShipperActivity extends BaseActivity {
         } else {
             mActivityAddShipperBinding.toolbar.tvTitle.setText("Thêm tài khoản shipper");
             mActivityAddShipperBinding.btnAddOrEdit.setText(getString(R.string.action_add));
+            mActivityAddShipperBinding.layoutPassword.setVisibility(View.VISIBLE);
         }
 //        Toast.makeText(this, FirebaseAuth.getInstance().getUid() + "", Toast.LENGTH_SHORT).show();
     }
@@ -145,7 +141,7 @@ public class AddShipperActivity extends BaseActivity {
 //            return;
 //        }
 
-        // Update food
+        // Update shipper
         if (isUpdate) {
             showProgressDialog(true);
             Map<String, Object> map = new HashMap<>();

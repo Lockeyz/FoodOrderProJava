@@ -34,6 +34,9 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.InformationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MapsActivity"
             android:exported="false" />
         <activity
@@ -55,7 +58,7 @@
             android:name=".activity.OrderDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AddShipperActivity"
+            android:name=".activity.admin.AddShipperActivity"
             android:exported="false" />
         <activity
             android:name=".activity.shipper.ShipperReportActivity"
@@ -97,7 +100,7 @@
             android:name=".activity.OrderHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AddFoodActivity"
+            android:name=".activity.admin.AddFoodActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.AdminReportActivity"

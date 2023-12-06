@@ -15,13 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AddFoodActivity;
+import com.pro.foodorder.activity.admin.AddFoodActivity;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.adapter.admin.AdminFoodAdapter;
 import com.pro.foodorder.constant.Constant;

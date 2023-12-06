@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/define_dimen_16"
-        android:text="@string/feedback_phone"
+        android:text="Số điện thoại (*)"
         android:textSize="@dimen/text_size_small" />
 
     <EditText
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/define_dimen_16"
-        android:text="@string/address_delivery"
+        android:text="Địa chỉ giao hàng (*)"
         android:textSize="@dimen/text_size_small" />
 
     <EditText

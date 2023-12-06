@@ -135,6 +135,8 @@ public class AdminOrderFragment extends BaseFragment {
         }
         ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                 .child(String.valueOf(order.getId())).child("completed").setValue(!order.isCompleted());
+        ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
+                .child(String.valueOf(order.getId())).child("state").setValue(4);
     }
 
     @Override

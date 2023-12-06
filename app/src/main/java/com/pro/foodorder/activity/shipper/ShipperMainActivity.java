@@ -39,13 +39,6 @@ public class ShipperMainActivity extends BaseActivity {
                         break;
 
                     case 1:
-                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
-                        break;
-
-                    case 2:
-                        mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_feedback).setChecked(true);
-                        break;
-                    case 3:
                         mActivityShipperMainBinding.bottomNavigation.getMenu().findItem(R.id.nav_account).setChecked(true);
                         break;
                 }
@@ -60,12 +53,9 @@ public class ShipperMainActivity extends BaseActivity {
             int id = item.getItemId();
             if (id == R.id.nav_order) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(0);
-            } else if (id == R.id.nav_home) {
+            }
+            else if (id == R.id.nav_account) {
                 mActivityShipperMainBinding.viewpager2.setCurrentItem(1);
-            } else if (id == R.id.nav_feedback) {
-                mActivityShipperMainBinding.viewpager2.setCurrentItem(2);
-            }  else if (id == R.id.nav_account) {
-                mActivityShipperMainBinding.viewpager2.setCurrentItem(3);
             }
             return true;
         });

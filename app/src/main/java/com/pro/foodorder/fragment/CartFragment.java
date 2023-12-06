@@ -59,6 +59,7 @@ public class CartFragment extends BaseFragment {
     private CartAdapter mCartAdapter;
     private List<Food> mListFoodCart;
     private int mAmount;
+    private User mUser;
 
     @Nullable
     @Override
@@ -189,6 +190,15 @@ public class CartFragment extends BaseFragment {
         // Set data
         tvFoodsOrder.setText(getStringListFoodsOrder());
         tvPriceOrder.setText(mFragmentCartBinding.tvTotalPrice.getText().toString());
+        FirebaseDatabase.getInstance().getReference("user/"+FirebaseAuth.getInstance().getUid())
+                .get().addOnCompleteListener(task -> {
+                   if (task.isSuccessful()){
+                       mUser = task.getResult().getValue(User.class);
+                       edtNameOrder.setText(mUser.getName().toString());
+                       edtPhoneOrder.setText(mUser.getPhone().toString());
+                       edtAddressOrder.setText(mUser.getAddress().toString());
+                   }
+                });
 
         // Set listener
         tvCancelOrder.setOnClickListener(v -> bottomSheetDialog.dismiss());

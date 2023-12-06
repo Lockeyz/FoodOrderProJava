@@ -65,7 +65,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
                         if (mContext == null) {
                             return;
                         }
-                        ControllerApplication.get(mContext).getAllFoodDatabaseReference()
+                        ControllerApplication.get(mContext).getAllBookingDatabaseReference()
                                 .child(String.valueOf(order.getId())).removeValue((error, ref) ->
                                         Toast.makeText(mContext,
                                                 "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show());
@@ -80,7 +80,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
         });
 
         holder.mItemAdminOrderBinding.btnCancelOrder.setOnClickListener(v -> {
-            ControllerApplication.get(mContext).getAllFoodDatabaseReference()
+            ControllerApplication.get(mContext).getAllBookingDatabaseReference()
                     .child(String.valueOf(order.getId())).removeValue((error, ref) ->
                             Toast.makeText(mContext,
                                     "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show());
@@ -101,12 +101,14 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
         });
 
         if (order.getState() == 0){
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.VISIBLE);
+            holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.tvState.setText("ĐƠN HÀNG mới chờ được xác nhận.");
         } else if (order.getState() == 1) {
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.VISIBLE);
             holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
-            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.VISIBLE);
             holder.mItemAdminOrderBinding.tvState.setText("Chờ shipper nhận đơn hàng.");
         } else if (order.getState() == 2) {
             holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
@@ -114,14 +116,14 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
             holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.tvState.setText("Có SHIPPER đã nhận đơn hàng.");
         } else if (order.getState() == 3) {
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
-            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.tvState.setText("Đơn hàng đang được giao.");
         } else if (order.getState() == 4) {
+            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmOrder.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.layoutConfirmShipper.setVisibility(View.GONE);
-            holder.mItemAdminOrderBinding.layoutCancel.setVisibility(View.GONE);
             holder.mItemAdminOrderBinding.tvState.setText("Đơn hàng được giao thành công!");
         }
 

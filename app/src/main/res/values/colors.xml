@@ -30,4 +30,5 @@
     <color name="bottomTabActive">#009688</color>
     <color name="bottomTabInActive">#171717</color>
     <color name="black_overlay">#667C7474</color>
+    <color name="black_overlay2">#66BABABA</color>
 </resources>

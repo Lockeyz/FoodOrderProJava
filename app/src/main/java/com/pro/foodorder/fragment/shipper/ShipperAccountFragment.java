@@ -36,8 +36,6 @@ public class ShipperAccountFragment extends BaseFragment {
 
         fragmentShipperAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickReport());
 
-        fragmentShipperAccountBinding.layoutReport.setOnClickListener(v -> onClickReport());
-
         fragmentShipperAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
         fragmentShipperAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
 

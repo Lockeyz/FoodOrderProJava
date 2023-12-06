@@ -26,10 +26,6 @@ public class ShipperViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new ShipperOrderFragment();
             case 1:
-                return new ShipperHomeFragment();
-            case 2:
-                return new ShipperFeedbackFragment();
-            case 3:
                 return new ShipperAccountFragment();
             default:
                 return new ShipperOrderFragment();
@@ -38,6 +34,6 @@ public class ShipperViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 2;
     }
 }

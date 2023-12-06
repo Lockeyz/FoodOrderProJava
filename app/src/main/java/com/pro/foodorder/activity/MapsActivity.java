@@ -12,6 +12,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.pro.foodorder.R;
+import com.pro.foodorder.databinding.ActivityMapsBinding;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +38,7 @@ import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private ActivityMapsBinding mActivityMapsBinding;
     Location currentLocation;
     FusedLocationProviderClient fusedClient;
     private static final int REQUEST_CODE = 101;
@@ -46,19 +49,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        mActivityMapsBinding = ActivityMapsBinding.inflate(getLayoutInflater());
+        setContentView(mActivityMapsBinding.getRoot());
 
-        map = findViewById(R.id.map);
-        searchView = findViewById(R.id.search);
-        searchView.clearFocus();
+//        map = findViewById(R.id.map);
+//        searchView = findViewById(R.id.search);
+        initToolbar();
+        mActivityMapsBinding.search.clearFocus();
 
         fusedClient = LocationServices.getFusedLocationProviderClient(this);
         getLocation();
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mActivityMapsBinding.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                String loc = searchView.getQuery().toString();
+                String loc = mActivityMapsBinding.search.getQuery().toString();
                 if (loc == null){
                     Toast.makeText(MapsActivity.this, "Location Not Found", Toast.LENGTH_SHORT).show();
                 } else {
@@ -88,6 +93,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return false;
             }
         });
+    }
+
+    private void initToolbar() {
+        mActivityMapsBinding.toolbar.imgBack.setVisibility(View.VISIBLE);
+        mActivityMapsBinding.toolbar.imgCart.setVisibility(View.GONE);
+        mActivityMapsBinding.toolbar.tvTitle.setText("Bản đồ");
+
+        mActivityMapsBinding.toolbar.imgBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void getLocation() {

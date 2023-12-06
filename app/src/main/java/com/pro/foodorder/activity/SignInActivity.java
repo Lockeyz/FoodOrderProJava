@@ -46,29 +46,32 @@ public class SignInActivity extends BaseActivity {
         } else if (!StringUtil.isValidEmail(strEmail)) {
             Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid), Toast.LENGTH_SHORT).show();
         } else {
-            if (mActivitySignInBinding.rdbAdmin.isChecked()) {
-                if (!strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
-                    Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_admin), Toast.LENGTH_SHORT).show();
-                } else {
-                    signInUser(strEmail, strPassword);
-                }
-                return;
-            }
+            // KO XÓA: Kiểm tra định dạng Email theo Radio Button
+//            if (mActivitySignInBinding.rdbAdmin.isChecked()) {
+//                if (!strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
+//                    Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_admin), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    signInUser(strEmail, strPassword);
+//                }
+//                return;
+//            }
+//
+//            if (mActivitySignInBinding.rdbShipper.isChecked()) {
+//                if (!strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+//                    Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_shipper), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    signInUser(strEmail, strPassword);
+//                }
+//                return;
+//            }
+//
+//            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)||strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+//                Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_user), Toast.LENGTH_SHORT).show();
+//            } else {
+//                signInUser(strEmail, strPassword);
+//            }
 
-            if (mActivitySignInBinding.rdbShipper.isChecked()) {
-                if (!strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
-                    Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_shipper), Toast.LENGTH_SHORT).show();
-                } else {
-                    signInUser(strEmail, strPassword);
-                }
-                return;
-            }
-
-            if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)||strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
-                Toast.makeText(SignInActivity.this, getString(R.string.msg_email_invalid_user), Toast.LENGTH_SHORT).show();
-            } else {
-                signInUser(strEmail, strPassword);
-            }
+            signInUser(strEmail, strPassword);
         }
     }
 

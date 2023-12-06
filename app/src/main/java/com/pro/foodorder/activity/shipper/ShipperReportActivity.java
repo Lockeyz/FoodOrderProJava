@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -36,6 +37,7 @@ public class ShipperReportActivity extends AppCompatActivity {
         mActivityShipperReportBinding = ActivityShipperReportBinding.inflate(getLayoutInflater());
         setContentView(mActivityShipperReportBinding.getRoot());
 
+
         initToolbar();
         initListener();
         getListRevenue();
@@ -44,9 +46,9 @@ public class ShipperReportActivity extends AppCompatActivity {
     private void initToolbar() {
         mActivityShipperReportBinding.toolbar.imgBack.setVisibility(View.VISIBLE);
         mActivityShipperReportBinding.toolbar.imgCart.setVisibility(View.GONE);
-        mActivityShipperReportBinding.toolbar.tvTitle.setText("Lịch sử đơn hàng");
-
+        mActivityShipperReportBinding.toolbar.tvTitle.setText("Đơn hàng đã giao");
         mActivityShipperReportBinding.toolbar.imgBack.setOnClickListener(v -> onBackPressed());
+
     }
 
     private void initListener() {
@@ -98,6 +100,10 @@ public class ShipperReportActivity extends AppCompatActivity {
             return false;
         }
         if (!order.isCompleted()) {
+            return false;
+        }
+        if (order.getShipperId() == null
+                || !order.getShipperId().contains(FirebaseAuth.getInstance().getUid())){
             return false;
         }
         String strDateFrom = mActivityShipperReportBinding.tvDateFrom.getText().toString();

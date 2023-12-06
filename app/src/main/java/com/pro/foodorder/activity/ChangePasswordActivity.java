@@ -25,8 +25,6 @@ public class ChangePasswordActivity extends BaseActivity {
         mActivityChangePasswordBinding.imgBack.setOnClickListener(v -> onBackPressed());
         mActivityChangePasswordBinding.btnChangePassword.setOnClickListener(v -> onClickValidateChangePassword());
 
-
-        Toast.makeText(this, FirebaseAuth.getInstance().getCurrentUser()+"", Toast.LENGTH_SHORT).show();
     }
 
     private void onClickValidateChangePassword() {

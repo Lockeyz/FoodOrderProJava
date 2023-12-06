@@ -14,6 +14,7 @@ import com.pro.foodorder.R;
 import com.pro.foodorder.activity.ChangePasswordActivity;
 import com.pro.foodorder.activity.ContactActivity;
 import com.pro.foodorder.activity.FeedbackActivity;
+import com.pro.foodorder.activity.InformationActivity;
 import com.pro.foodorder.activity.MainActivity;
 import com.pro.foodorder.activity.OrderHistoryActivity;
 import com.pro.foodorder.activity.SignInActivity;
@@ -30,7 +31,7 @@ public class AccountFragment extends BaseFragment {
 
         fragmentAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
-
+        fragmentAccountBinding.layoutInformation.setOnClickListener(v -> onClickInformation());
         fragmentAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
         fragmentAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickOrderHistory());
         fragmentAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
@@ -48,6 +49,10 @@ public class AccountFragment extends BaseFragment {
         if (getActivity() != null) {
             ((MainActivity) getActivity()).setToolBar(false, getString(R.string.account));
         }
+    }
+
+    private void onClickInformation() {
+        GlobalFunction.startActivity(getActivity(), InformationActivity.class);
     }
 
     private void onClickOrderHistory() {

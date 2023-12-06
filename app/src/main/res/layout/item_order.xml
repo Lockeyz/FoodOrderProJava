@@ -14,10 +14,20 @@
         android:padding="16dp"
         android:layout_below="@+id/layout_confirm">
 
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Đơn hàng đã hoàn thành"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="@dimen/define_dimen_10">
 
             <TextView
                 android:id="@+id/label_id"

@@ -30,6 +30,66 @@
         android:background="@color/textColorPrimary" />
 
     <LinearLayout
+        android:id="@+id/layout_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/define_dimen_10"
+        android:paddingBottom="@dimen/define_dimen_10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_change_password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thiết lập thông tin cá nhân"
+            android:layout_marginStart="@dimen/define_dimen_10"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:layout_marginBottom="@dimen/define_dimen_5"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
+        android:id="@+id/layout_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/define_dimen_10"
+        android:paddingBottom="@dimen/define_dimen_10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_password"
+            android:layout_marginStart="@dimen/define_dimen_10"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/define_dimen_5"
+        android:layout_marginBottom="@dimen/define_dimen_5"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
         android:id="@+id/layout_order_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,35 +119,7 @@
         android:layout_marginBottom="@dimen/define_dimen_5"
         android:background="@color/dividerColor" />
 
-    <LinearLayout
-        android:id="@+id/layout_change_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_change_password" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_password"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
 
     <LinearLayout
         android:id="@+id/layout_exchange_point"

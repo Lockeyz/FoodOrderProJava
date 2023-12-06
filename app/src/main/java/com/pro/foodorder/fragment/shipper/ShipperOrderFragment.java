@@ -79,7 +79,8 @@ public class ShipperOrderFragment extends BaseFragment {
                         if (order == null || mListOrder == null || mShipperOrderAdapter == null) {
                             return;
                         }
-                        if (order.isCompleted() == false){
+                        if (order.isCompleted() == false
+                                && (order.getShipperId() == null || order.getShipperId().contains(FirebaseAuth.getInstance().getUid()))){
                             mListOrder.add(0, order);
                             mShipperOrderAdapter.notifyDataSetChanged();
                         }

@@ -26,18 +26,20 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
-                android:text="@string/shipper_name"/>
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="Tài khoản"/>
 
-            <EditText
-                android:id="@+id/edt_name"
+            <TextView
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_name"
+                android:gravity="start"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:padding="@dimen/define_dimen_12"
+                android:scrollbars="vertical"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
 
@@ -46,55 +48,21 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
-                android:layout_marginTop="@dimen/define_dimen_10"
-                android:text="@string/msg_shipper_email_require"/>
-
+                android:text="Họ và tên"/>
 
             <EditText
-                android:id="@+id/edt_email"
+                android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
-                android:gravity="start"
-                android:hint="@string/hint_shipper_email"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:padding="@dimen/define_dimen_12"
-                android:scrollbars="vertical"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
 
-            <LinearLayout
-                android:id="@+id/layout_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/textColorSecondary"
-                    android:layout_marginTop="@dimen/define_dimen_10"
-                    android:text="@string/msg_shipper_password_require"/>
-
-                <EditText
-                    android:id="@+id/edt_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/define_dimen_4"
-                    android:background="@drawable/bg_white_corner_6_border_gray"
-                    android:gravity="start"
-                    android:hint="Độ dài mật khẩu có ít nhất 6 ký tự..."
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:padding="@dimen/define_dimen_12"
-                    android:scrollbars="vertical"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="@dimen/text_size_small" />
-
-            </LinearLayout>
 
 
             <TextView

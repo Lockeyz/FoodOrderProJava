@@ -50,6 +50,15 @@ public class SignUpActivity extends BaseActivity {
                 return;
             }
 
+            if (mActivitySignUpBinding.rdbShipper.isChecked()) {
+                if (!strEmail.contains(Constant.SHIPPER_EMAIL_FORMAT)) {
+                    Toast.makeText(SignUpActivity.this, getString(R.string.msg_email_invalid_shipper), Toast.LENGTH_SHORT).show();
+                } else {
+                    signUpUser(strEmail, strPassword);
+                }
+                return;
+            }
+
             if (strEmail.contains(Constant.ADMIN_EMAIL_FORMAT)) {
                 Toast.makeText(SignUpActivity.this, getString(R.string.msg_email_invalid_user), Toast.LENGTH_SHORT).show();
             } else {
@@ -65,12 +74,7 @@ public class SignUpActivity extends BaseActivity {
                 .addOnCompleteListener(this, task -> {
                     showProgressDialog(false);
                     if (task.isSuccessful()) {
-//                        FirebaseUser user = firebaseAuth.getCurrentUser();
-//                        if (user != null) {
-//                            User userObject = new User(user.getEmail(), password);
-//                            if (user.getEmail() != null && user.getEmail().contains(Constant.ADMIN_EMAIL_FORMAT)) {
-//                                userObject.setAdmin(true);
-//                            }
+
                         User user = new User(FirebaseUtils.currentUserId(), email, password, "", "",
                                 "", "", "", false, false);
                         User userObject = new User(email, password);
