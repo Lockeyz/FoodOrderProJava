@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/define_dimen_10"
+    android:layout_marginEnd="@dimen/define_dimen_10">
+
+    <LinearLayout
+        android:id="@+id/layout_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/define_dimen_5"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layout_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/define_dimen_5"
+                app:cardCornerRadius="@dimen/define_dimen_6">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/define_dimen_80">
+
+                    <ImageView
+                        android:id="@+id/img_voucher"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/image_no_available"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/define_dimen_5"
+                android:layout_marginEnd="@dimen/define_dimen_5"
+                android:layout_toEndOf="@+id/layout_image"
+                android:layout_toStartOf="@+id/layout_exchange"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_voucher_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Voucher"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/define_dimen_2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Giá trị:"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/tv_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="10%"
+                        android:layout_marginStart="@dimen/define_dimen_5"
+                        android:textColor="@color/bottomTabActive0"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/define_dimen_2"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Đơn hàng áp dụng:"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/tv_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="200.000 đồng"
+                        android:layout_marginStart="@dimen/define_dimen_5"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/define_dimen_2"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Điểm quy đổi:"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/tv_conversion_point"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1000 điểm"
+                        android:layout_marginStart="@dimen/define_dimen_5"
+                        android:textColor="@color/purple"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_exchange"
+                    android:layout_width="@dimen/define_dimen_60"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_red_shape_corner_6"
+                    android:gravity="center"
+                    android:padding="@dimen/define_dimen_10"
+                    android:text="Đổi"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+

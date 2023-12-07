@@ -17,6 +17,7 @@ import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.activity.ChangePasswordActivity;
 import com.pro.foodorder.activity.SignInActivity;
+import com.pro.foodorder.activity.admin.AdminVoucherActivity;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.FragmentAdminAccountBinding;
 import com.pro.foodorder.fragment.BaseFragment;
@@ -32,6 +33,7 @@ public class AdminAccountFragment extends BaseFragment {
         fragmentAdminAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
         fragmentAdminAccountBinding.layoutReport.setOnClickListener(v -> onClickReport());
+        fragmentAdminAccountBinding.layoutVoucher.setOnClickListener(v -> onClickVoucher());
         fragmentAdminAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
 
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
@@ -51,6 +53,9 @@ public class AdminAccountFragment extends BaseFragment {
 
     private void onClickReport() {
         GlobalFunction.startActivity(getActivity(), AdminReportActivity.class);
+    }
+    private void onClickVoucher() {
+        GlobalFunction.startActivity(getActivity(), AdminVoucherActivity.class);
     }
 
     private void onClickFeedback() {

@@ -8,18 +8,13 @@ import java.util.List;
 
 public class Promotion implements Serializable {
 
-    @PrimaryKey
+
     private long id;
     private String name;
     private String image;
     private String banner;
     private String description;
-//    private int price;
-//    private int sale;
-//    private int count;
-//    private int totalPrice;
     private boolean popular;
-    @Ignore
     private List<Image> images;
 
     public long getId() {

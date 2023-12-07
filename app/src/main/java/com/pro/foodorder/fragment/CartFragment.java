@@ -2,11 +2,13 @@ package com.pro.foodorder.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.MainActivity;
+import com.pro.foodorder.activity.MyVoucherActivity;
+import com.pro.foodorder.activity.admin.AddFoodActivity;
+import com.pro.foodorder.activity.admin.AdminReportActivity;
 import com.pro.foodorder.adapter.CartAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
@@ -30,6 +35,7 @@ import com.pro.foodorder.database.FoodDatabase;
 import com.pro.foodorder.databinding.FragmentCartBinding;
 import com.pro.foodorder.event.ReloadListCartEvent;
 import com.pro.foodorder.model.Food;
+import com.pro.foodorder.model.MyVoucher;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
@@ -43,7 +49,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -59,6 +67,7 @@ public class CartFragment extends BaseFragment {
     private CartAdapter mCartAdapter;
     private List<Food> mListFoodCart;
     private int mAmount;
+    private int mAmountRewardPoint;
     private User mUser;
 
     @Nullable
@@ -69,7 +78,9 @@ public class CartFragment extends BaseFragment {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+        initView();
         displayListFoodInCart();
+        mFragmentCartBinding.tvVoucher.setOnClickListener(v -> onClickChooseVoucher());
         mFragmentCartBinding.tvOrderCart.setOnClickListener(v -> onClickOrderCart());
 
         return mFragmentCartBinding.getRoot();
@@ -79,6 +90,16 @@ public class CartFragment extends BaseFragment {
     protected void initToolbar() {
         if (getActivity() != null) {
             ((MainActivity) getActivity()).setToolBar(false, getString(R.string.cart));
+        }
+    }
+
+    private void initView() {
+        if (MainActivity.myVoucherId!=null){
+            FirebaseDatabase.getInstance().getReference("myVoucher/"+MainActivity.myVoucherId)
+                    .get().addOnCompleteListener(task -> {
+                        MyVoucher myVoucher = task.getResult().getValue(MyVoucher.class);
+                        mFragmentCartBinding.tvVoucherName.setText(myVoucher.getName());
+                    });
         }
     }
 
@@ -98,9 +119,10 @@ public class CartFragment extends BaseFragment {
         mListFoodCart = new ArrayList<>();
         mListFoodCart = FoodDatabase.getInstance(getActivity()).foodDAO().getListFoodCart();
         if (mListFoodCart == null || mListFoodCart.isEmpty()) {
+            mFragmentCartBinding.layoutVoucher.setVisibility(View.GONE);
             return;
         }
-
+        mFragmentCartBinding.layoutVoucher.setVisibility(View.VISIBLE);
         mCartAdapter = new CartAdapter(mListFoodCart, new CartAdapter.IClickListener() {
             @Override
             public void clickDeteteFood(Food food, int position) {
@@ -131,22 +153,48 @@ public class CartFragment extends BaseFragment {
 
     private void calculateTotalPrice() {
         List<Food> listFoodCart = FoodDatabase.getInstance(getActivity()).foodDAO().getListFoodCart();
+
         if (listFoodCart == null || listFoodCart.isEmpty()) {
             String strZero = 0 + Constant.CURRENCY;
             mFragmentCartBinding.tvTotalPrice.setText(strZero);
             mAmount = 0;
+            mAmountRewardPoint = 0;
             return;
         }
 
         int totalPrice = 0;
+
+        int totalRewardPoint = 0;
         for (Food food : listFoodCart) {
             totalPrice = totalPrice + food.getTotalPrice();
+            // Tổng điểm thưởng
+            totalRewardPoint = totalRewardPoint + food.getTotalRewardPoint();
         }
 
         String strTotalPrice = totalPrice + Constant.CURRENCY;
-        mFragmentCartBinding.tvTotalPrice.setText(strTotalPrice);
-        mAmount = totalPrice;
+
+        if (MainActivity.myVoucherId!=null){
+            mFragmentCartBinding.tvTotalPrice.setVisibility(View.VISIBLE);
+            int mTotalPrice = totalPrice;
+            FirebaseDatabase.getInstance().getReference("myVoucher/"+MainActivity.myVoucherId)
+                    .get().addOnCompleteListener(task -> {
+                        MyVoucher myVoucher = task.getResult().getValue(MyVoucher.class);
+                        int realTotalPrice = mTotalPrice - (mTotalPrice * myVoucher.getValue() / 100);
+                        mFragmentCartBinding.tvTotalRealPrice.setText(realTotalPrice+Constant.CURRENCY);
+                        mAmount = realTotalPrice;
+                        mFragmentCartBinding.tvTotalPrice.setText(strTotalPrice);
+                        mFragmentCartBinding.tvTotalPrice.setPaintFlags(mFragmentCartBinding.tvTotalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                    });
+        } else {
+            mFragmentCartBinding.tvVoucherName.setText("");
+            mFragmentCartBinding.tvTotalPrice.setVisibility(View.GONE);
+            mFragmentCartBinding.tvTotalRealPrice.setText(strTotalPrice);
+            mAmount = totalPrice;
+            mAmountRewardPoint = totalRewardPoint;
+        }
     }
+
 
     private void deleteFoodFromCart(Food food, int position) {
         new AlertDialog.Builder(getActivity())
@@ -218,6 +266,19 @@ public class CartFragment extends BaseFragment {
                         mAmount, getStringListFoodsOrder(), Constant.TYPE_PAYMENT_CASH,
                         0, false);
 
+                Map<String, Object> map = new HashMap<>();
+                FirebaseDatabase.getInstance().getReference("user/"+FirebaseAuth.getInstance().getUid())
+                        .get().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()){
+                                User mUser = task.getResult().getValue(User.class);
+                                int rewardPoint = mUser.getRewardPoint() + mAmountRewardPoint;
+                                map.put("rewardPoint", rewardPoint);
+
+                                ControllerApplication.get(getContext()).getAllUserDatabaseReference()
+                                        .child(FirebaseAuth.getInstance().getUid()).updateChildren(map);
+                            }
+                        });
+
                 ControllerApplication.get(getActivity()).getAllBookingDatabaseReference()
                         .child(String.valueOf(id))
                         .setValue(order, (error1, ref1) -> {
@@ -230,11 +291,23 @@ public class CartFragment extends BaseFragment {
 
                             String orderId = id + "";
                             sendOrderNotification(orderId);
+
+                            //Xóa voucher đã sử dụng khi đặt hàng xong
+                            FirebaseDatabase.getInstance().getReference("myVoucher")
+                                    .child(MainActivity.myVoucherId+"").removeValue();
+                            MainActivity.myVoucherId = null;
+                            mFragmentCartBinding.tvVoucherName.setText("");
+                            mFragmentCartBinding.tvTotalPrice.setText("");
+                            mFragmentCartBinding.tvTotalRealPrice.setText("0");
                         });
             }
         });
 
         bottomSheetDialog.show();
+    }
+
+    public void onClickChooseVoucher(){
+        GlobalFunction.startActivity(getActivity(), MyVoucherActivity.class);
     }
 
     private String getStringListFoodsOrder() {
@@ -254,6 +327,7 @@ public class CartFragment extends BaseFragment {
         return result;
     }
 
+    // Gửi thông báo đơn hàng đến admin
     void sendOrderNotification(String orderId) {
         String message = "Đơn hàng " + orderId + " đang chờ xác nhận!";
         ControllerApplication.get(getContext()).getAllAdminDatabaseReference().get()

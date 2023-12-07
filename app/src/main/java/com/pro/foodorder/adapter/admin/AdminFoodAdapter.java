@@ -19,11 +19,11 @@ import java.util.List;
 public class AdminFoodAdapter extends RecyclerView.Adapter<AdminFoodAdapter.AdminFoodViewHolder> {
 
     private final List<Food> mListFoods;
-    public final IOnManageFoodListener iOnManageFoodListener;
+    public final IOnManageFoodListener mIOnManageFoodListener;
 
-    public AdminFoodAdapter(List<Food> mListFoods, IOnManageFoodListener listener) {
+    public AdminFoodAdapter(List<Food> mListFoods, IOnManageFoodListener mIOnManageFoodListener) {
         this.mListFoods = mListFoods;
-        this.iOnManageFoodListener = listener;
+        this.mIOnManageFoodListener = mIOnManageFoodListener;
     }
 
     @NonNull
@@ -69,8 +69,8 @@ public class AdminFoodAdapter extends RecyclerView.Adapter<AdminFoodAdapter.Admi
             holder.mItemAdminFoodBinding.tvPopular.setText("Không");
         }
 
-        holder.mItemAdminFoodBinding.imgEdit.setOnClickListener(v -> iOnManageFoodListener.onClickUpdateFood(food));
-        holder.mItemAdminFoodBinding.imgDelete.setOnClickListener(v -> iOnManageFoodListener.onClickDeleteFood(food));
+        holder.mItemAdminFoodBinding.imgEdit.setOnClickListener(v -> mIOnManageFoodListener.onClickUpdateFood(food));
+        holder.mItemAdminFoodBinding.imgDelete.setOnClickListener(v -> mIOnManageFoodListener.onClickDeleteFood(food));
     }
 
     @Override

@@ -14,12 +14,13 @@ public class FoodObject implements Serializable {
     private String banner;
     private boolean popular;
     private List<Image> images;
+    private int rewardPoint;
 
     public FoodObject() {
     }
 
     public FoodObject(long id, String name, String description, int price, int sale,
-                      String image, String banner, boolean popular) {
+                      String image, String banner, boolean popular, int rewardPoint) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,6 +29,7 @@ public class FoodObject implements Serializable {
         this.image = image;
         this.banner = banner;
         this.popular = popular;
+        this.rewardPoint = rewardPoint;
     }
 
     public long getId() {
@@ -100,5 +102,13 @@ public class FoodObject implements Serializable {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public int getRewardPoint() {
+        return rewardPoint;
+    }
+
+    public void setRewardPoint(int rewardPoint) {
+        this.rewardPoint = rewardPoint;
     }
 }

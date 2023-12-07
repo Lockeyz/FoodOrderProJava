@@ -60,11 +60,10 @@ public class AddFoodActivity extends BaseActivity {
             mActivityAddFoodBinding.btnAddOrEdit.setText(getString(R.string.action_edit));
 
             mActivityAddFoodBinding.edtName.setText(mFood.getName());
-
             mActivityAddFoodBinding.edtDescription.setText(mFood.getDescription());
-
             mActivityAddFoodBinding.edtPrice.setText(String.valueOf(mFood.getPrice()));
             mActivityAddFoodBinding.edtDiscount.setText(String.valueOf(mFood.getSale()));
+            mActivityAddFoodBinding.edtRewardPoint.setText(String.valueOf(mFood.getRewardPoint()));
             mActivityAddFoodBinding.edtImage.setText(mFood.getImage());
             mActivityAddFoodBinding.edtImageBanner.setText(mFood.getBanner());
             mActivityAddFoodBinding.chbPopular.setChecked(mFood.isPopular());
@@ -95,6 +94,7 @@ public class AddFoodActivity extends BaseActivity {
         String strDescription = mActivityAddFoodBinding.edtDescription.getText().toString().trim();
         String strPrice = mActivityAddFoodBinding.edtPrice.getText().toString().trim();
         String strDiscount = mActivityAddFoodBinding.edtDiscount.getText().toString().trim();
+        String strRewardPoint = mActivityAddFoodBinding.edtRewardPoint.getText().toString().trim();
         String strImage = mActivityAddFoodBinding.edtImage.getText().toString().trim();
         String strImageBanner = mActivityAddFoodBinding.edtImageBanner.getText().toString().trim();
         boolean isPopular = mActivityAddFoodBinding.chbPopular.isChecked();
@@ -146,6 +146,7 @@ public class AddFoodActivity extends BaseActivity {
             map.put("description", strDescription);
             map.put("price", Integer.parseInt(strPrice));
             map.put("sale", Integer.parseInt(strDiscount));
+            map.put("rewardPoint", Integer.parseInt(strRewardPoint));
             map.put("image", strImage);
             map.put("banner", strImageBanner);
             map.put("popular", isPopular);
@@ -167,7 +168,7 @@ public class AddFoodActivity extends BaseActivity {
         showProgressDialog(true);
         long foodId = System.currentTimeMillis();
         FoodObject food = new FoodObject(foodId, strName, strDescription, Integer.parseInt(strPrice),
-                Integer.parseInt(strDiscount), strImage, strImageBanner, isPopular);
+                Integer.parseInt(strDiscount), strImage, strImageBanner, isPopular, Integer.parseInt(strRewardPoint));
         if (!listImages.isEmpty()) {
             food.setImages(listImages);
         }
@@ -178,6 +179,7 @@ public class AddFoodActivity extends BaseActivity {
             mActivityAddFoodBinding.edtDescription.setText("");
             mActivityAddFoodBinding.edtPrice.setText("");
             mActivityAddFoodBinding.edtDiscount.setText("");
+            mActivityAddFoodBinding.edtRewardPoint.setText("");
             mActivityAddFoodBinding.edtImage.setText("");
             mActivityAddFoodBinding.edtImageBanner.setText("");
             mActivityAddFoodBinding.chbPopular.setChecked(false);

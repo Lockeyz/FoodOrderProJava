@@ -72,7 +72,6 @@
                 android:imeOptions="actionNext"
                 android:enabled="false"
                 android:focusable="false"
-                android:textColor="@color/textColorSecondary"
                 android:inputType="textEmailAddress"
                 android:padding="@dimen/define_dimen_12"
                 android:textSize="@dimen/text_size_small" />

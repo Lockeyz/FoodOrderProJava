@@ -21,6 +21,7 @@ public class User implements Serializable {
     private boolean isShipper;
 
     private String fcmToken;
+    private int rewardPoint;
 
     public User() {
     }
@@ -129,6 +130,14 @@ public class User implements Serializable {
 
     public void setFcmToken(String fcmToken) {
         this.fcmToken = fcmToken;
+    }
+
+    public int getRewardPoint() {
+        return rewardPoint;
+    }
+
+    public void setRewardPoint(int rewardPoint) {
+        this.rewardPoint = rewardPoint;
     }
 
     public String toJSon() {

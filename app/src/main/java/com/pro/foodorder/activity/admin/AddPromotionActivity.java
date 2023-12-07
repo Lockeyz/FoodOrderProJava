@@ -1,4 +1,4 @@
-package com.pro.foodorder.activity;
+package com.pro.foodorder.activity.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +8,10 @@ import android.widget.Toast;
 
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
+import com.pro.foodorder.activity.BaseActivity;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityAddPromotionBinding;
-import com.pro.foodorder.model.Food;
-import com.pro.foodorder.model.FoodObject;
 import com.pro.foodorder.model.Image;
 import com.pro.foodorder.model.Promotion;
 import com.pro.foodorder.model.PromotionObject;
@@ -134,8 +133,6 @@ public class AddPromotionActivity extends BaseActivity {
             Map<String, Object> map = new HashMap<>();
             map.put("name", strName);
             map.put("description", strDescription);
-//            map.put("price", Integer.parseInt(strPrice));
-//            map.put("sale", Integer.parseInt(strDiscount));
             map.put("image", strImage);
             map.put("banner", strImageBanner);
             map.put("popular", isPopular);

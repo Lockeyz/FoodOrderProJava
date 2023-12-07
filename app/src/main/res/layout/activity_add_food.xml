@@ -150,6 +150,46 @@
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="Điểm thưởng (*)"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_4"
+                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:padding="@dimen/define_dimen_12">
+
+                <EditText
+                    android:id="@+id/edt_rewardPoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_point"
+                    android:background="@color/white"
+                    android:hint="Điểm thưởng..."
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="điểm"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/textColorSecondary"
+                android:layout_marginTop="@dimen/define_dimen_10"
                 android:text="@string/food_image"/>
 
             <EditText

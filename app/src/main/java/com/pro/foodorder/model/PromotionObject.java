@@ -10,8 +10,6 @@ public class PromotionObject implements Serializable {
     private String image;
     private String banner;
     private String description;
-//    private int price;
-//    private int sale;
     private boolean popular;
     private List<Image> images;
 

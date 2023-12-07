@@ -77,7 +77,6 @@ public class AdminMainActivity extends BaseActivity {
             return true;
         });
 
-        String m = getIntent().getStringExtra("userId");
         getFCMToken();
     }
 

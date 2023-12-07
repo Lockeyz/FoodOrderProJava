@@ -53,4 +53,12 @@ public class ControllerApplication extends Application {
     public DatabaseReference getAllBookingDatabaseReference() {
         return mFirebaseDatabase.getReference("booking");
     }
+
+    public DatabaseReference getAllVoucherDatabaseReference() {
+        return mFirebaseDatabase.getReference("voucher");
+    }
+
+    public DatabaseReference getAllMyVoucherDatabaseReference() {
+        return mFirebaseDatabase.getReference("myVoucher");
+    }
 }

@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
-                android:text="Tên khuyến mãi"/>
+                android:text="Tên voucher (*)"/>
 
             <EditText
                 android:id="@+id/edt_name"
@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_name"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:padding="@dimen/define_dimen_12"
@@ -47,31 +46,8 @@
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="@dimen/define_dimen_10"
-                android:text="Mô tả khuyến mãi"/>
+                android:text="Link ảnh voucher (*)"/>
 
-            <EditText
-                android:id="@+id/edt_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_description"
-                android:imeOptions="actionNext"
-                android:gravity="start"
-                android:inputType="textMultiLine"
-                android:padding="@dimen/define_dimen_12"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small"
-                />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@color/textColorSecondary"
-                android:layout_marginTop="@dimen/define_dimen_10"
-                android:text="Link ảnh khuyến mãi"/>
 
             <EditText
                 android:id="@+id/edt_image"
@@ -79,10 +55,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_image"
+                android:gravity="start"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:padding="@dimen/define_dimen_12"
+                android:scrollbars="vertical"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_small" />
 
@@ -92,33 +69,38 @@
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="@dimen/define_dimen_10"
-                android:text="@string/food_image_banner"/>
-
-            <EditText
-                android:id="@+id/edt_image_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_image_banner"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:padding="@dimen/define_dimen_12"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small" />
+                android:text="Giá trị voucher"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/define_dimen_10"
+                android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
                 android:padding="@dimen/define_dimen_12">
 
-                <CheckBox
-                    android:id="@+id/chb_popular"
+                <EditText
+                    android:id="@+id/edt_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_percent"
+                    android:background="@color/white"
+                    android:hint="Vd: 5, 10, 15, 20, ..."
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/popular" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="%"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
             </RelativeLayout>
 
             <TextView
@@ -127,28 +109,79 @@
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="@dimen/define_dimen_10"
-                android:text="@string/food_image_other"/>
+                android:text="Đơn hàng áp dụng (*)"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_xsmall"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="@string/food_image_other_note"/>
-
-            <EditText
-                android:id="@+id/edt_other_image"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
                 android:background="@drawable/bg_white_corner_6_border_gray"
-                android:hint="@string/hint_image_other"
-                android:imeOptions="actionDone"
-                android:gravity="start"
-                android:inputType="textMultiLine"
-                android:padding="@dimen/define_dimen_12"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small" />
+                android:padding="@dimen/define_dimen_12">
+
+                <EditText
+                    android:id="@+id/edt_condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_currency"
+                    android:background="@color/white"
+                    android:hint="@string/hint_price"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/currency_food"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/textColorSecondary"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="Điểm thưởng để quy đổi (*)"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_4"
+                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:padding="@dimen/define_dimen_12">
+
+                <EditText
+                    android:id="@+id/edt_conversionPoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
+                    android:layout_toStartOf="@+id/tv_point"
+                    android:background="@color/white"
+                    android:hint="500, 1000, 1500, 2000, ..."
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="điểm"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/text_size_small" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_add_or_edit"

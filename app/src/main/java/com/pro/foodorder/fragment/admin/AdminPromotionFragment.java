@@ -20,7 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
-import com.pro.foodorder.activity.AddPromotionActivity;
+import com.pro.foodorder.activity.admin.AddPromotionActivity;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
 import com.pro.foodorder.adapter.admin.AdminPromotionAdapter;
 import com.pro.foodorder.constant.Constant;

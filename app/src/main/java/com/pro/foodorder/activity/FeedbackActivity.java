@@ -4,17 +4,21 @@ package com.pro.foodorder.activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityFeedbackBinding;
 import com.pro.foodorder.databinding.ActivityOrderHistoryBinding;
 import com.pro.foodorder.model.Feedback;
+import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
 import com.pro.foodorder.utils.StringUtil;
 
 public class FeedbackActivity extends BaseActivity {
 
+    User mUser;
     private ActivityFeedbackBinding mActivityFeedbackBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,22 @@ public class FeedbackActivity extends BaseActivity {
         setContentView(mActivityFeedbackBinding.getRoot());
 
         initToolbar();
-        mActivityFeedbackBinding.edtEmail.setText(DataStoreManager.getUser().getEmail());
+        initView();
+
+
         mActivityFeedbackBinding.tvSendFeedback.setOnClickListener(v -> onClickSendFeedback());
+    }
+
+    private void initView() {
+        mActivityFeedbackBinding.edtEmail.setText(DataStoreManager.getUser().getEmail());
+        FirebaseDatabase.getInstance().getReference("user/"+ FirebaseAuth.getInstance().getUid())
+                .get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        mUser = task.getResult().getValue(User.class);
+                        mActivityFeedbackBinding.edtName.setText(mUser.getName());
+                        mActivityFeedbackBinding.edtPhone.setText(mUser.getPhone());
+                    }
+                });
     }
 
     private void onClickSendFeedback() {

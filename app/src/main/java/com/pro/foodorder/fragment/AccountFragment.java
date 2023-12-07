@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.ChangePasswordActivity;
 import com.pro.foodorder.activity.ContactActivity;
+import com.pro.foodorder.activity.ExchangeVoucherActivity;
 import com.pro.foodorder.activity.FeedbackActivity;
 import com.pro.foodorder.activity.InformationActivity;
 import com.pro.foodorder.activity.MainActivity;
@@ -20,25 +22,36 @@ import com.pro.foodorder.activity.OrderHistoryActivity;
 import com.pro.foodorder.activity.SignInActivity;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.FragmentAccountBinding;
+import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
+import com.pro.foodorder.utils.GlideUtils;
 
 public class AccountFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentAccountBinding fragmentAccountBinding = FragmentAccountBinding.inflate(inflater, container, false);
+        FragmentAccountBinding mFragmentAccountBinding = FragmentAccountBinding.inflate(inflater, container, false);
 
-        fragmentAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
+        FirebaseDatabase.getInstance().getReference("user/"+FirebaseAuth.getInstance().getUid())
+                .get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        User user = task.getResult().getValue(User.class);
+                        GlideUtils.loadUrl(user.getAvatar(), mFragmentAccountBinding.imageAvatar);
+                    }
+                });
 
-        fragmentAccountBinding.layoutInformation.setOnClickListener(v -> onClickInformation());
-        fragmentAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
-        fragmentAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickOrderHistory());
-        fragmentAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
-        fragmentAccountBinding.layoutContact.setOnClickListener(v -> onClickContact());
-        fragmentAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
+        mFragmentAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 
-        return fragmentAccountBinding.getRoot();
+        mFragmentAccountBinding.layoutInformation.setOnClickListener(v -> onClickInformation());
+        mFragmentAccountBinding.layoutChangePassword.setOnClickListener(v -> onClickChangePassword());
+        mFragmentAccountBinding.layoutExchangePoint.setOnClickListener(v -> onClickExchangePoint());
+        mFragmentAccountBinding.layoutOrderHistory.setOnClickListener(v -> onClickOrderHistory());
+        mFragmentAccountBinding.layoutFeedback.setOnClickListener(v -> onClickFeedback());
+        mFragmentAccountBinding.layoutContact.setOnClickListener(v -> onClickContact());
+        mFragmentAccountBinding.layoutSignOut.setOnClickListener(v -> onClickSignOut());
+
+        return mFragmentAccountBinding.getRoot();
     }
 
 
@@ -53,6 +66,9 @@ public class AccountFragment extends BaseFragment {
 
     private void onClickInformation() {
         GlobalFunction.startActivity(getActivity(), InformationActivity.class);
+    }
+    private void onClickExchangePoint() {
+        GlobalFunction.startActivity(getActivity(), ExchangeVoucherActivity.class);
     }
 
     private void onClickOrderHistory() {

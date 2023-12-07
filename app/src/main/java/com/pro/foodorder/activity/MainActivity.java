@@ -18,6 +18,7 @@ import com.pro.foodorder.databinding.ActivityMainBinding;
 public class MainActivity extends BaseActivity {
 
     private ActivityMainBinding mActivityMainBinding;
+    public static String myVoucherId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,11 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+        if (getIntent().getStringExtra("myVoucherId")!=null){
+            mActivityMainBinding.viewpager2.setCurrentItem(2);
+            myVoucherId = getIntent().getStringExtra("myVoucherId");
+        }
 
         mActivityMainBinding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();

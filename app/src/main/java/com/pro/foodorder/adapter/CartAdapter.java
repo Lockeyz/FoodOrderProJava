@@ -63,8 +63,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             holder.mItemCartBinding.tvCount.setText(String.valueOf(newCount));
 
             int totalPrice = food.getRealPrice() * newCount;
+            int totalRewardPoint = food.getRewardPoint() * newCount;
+
             food.setCount(newCount);
             food.setTotalPrice(totalPrice);
+            food.setTotalRewardPoint(totalRewardPoint);
 
             iClickListener.updateItemFood(food, holder.getAdapterPosition());
         });
@@ -74,8 +77,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             holder.mItemCartBinding.tvCount.setText(String.valueOf(newCount));
 
             int totalPrice = food.getRealPrice() * newCount;
+            int totalRewardPoint = food.getRewardPoint() * newCount;
+
             food.setCount(newCount);
             food.setTotalPrice(totalPrice);
+            food.setTotalRewardPoint(totalRewardPoint);
 
             iClickListener.updateItemFood(food, holder.getAdapterPosition());
         });

@@ -34,13 +34,25 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.MyVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ExchangeVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.AddVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.admin.AdminVoucherActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.InformationActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MapsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AddPromotionActivity"
+            android:name=".activity.admin.AddPromotionActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.AdminFeedbackActivity"

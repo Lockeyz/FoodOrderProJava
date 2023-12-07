@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -150,11 +151,14 @@ public class FoodDetailActivity extends BaseActivity {
         tvFoodNameCart.setText(mFood.getName());
 
         int totalPrice = mFood.getRealPrice();
+        int totalRewardPoint = mFood.getRewardPoint();
+
         String strTotalPrice = totalPrice + Constant.CURRENCY;
         tvFoodPriceCart.setText(strTotalPrice);
 
         mFood.setCount(1);
         mFood.setTotalPrice(totalPrice);
+        mFood.setTotalRewardPoint(totalRewardPoint);
 
         tvSubtractCount.setOnClickListener(v -> {
             int count = Integer.parseInt(tvCount.getText().toString());
@@ -165,11 +169,14 @@ public class FoodDetailActivity extends BaseActivity {
             tvCount.setText(String.valueOf(newCount));
 
             int totalPrice1 = mFood.getRealPrice() * newCount;
+            int totalRewardPoint1 = mFood.getRewardPoint() * newCount;
+
             String strTotalPrice1 = totalPrice1 + Constant.CURRENCY;
             tvFoodPriceCart.setText(strTotalPrice1);
 
             mFood.setCount(newCount);
             mFood.setTotalPrice(totalPrice1);
+            mFood.setTotalRewardPoint(totalRewardPoint1);
         });
 
         tvAddCount.setOnClickListener(v -> {
@@ -177,11 +184,13 @@ public class FoodDetailActivity extends BaseActivity {
             tvCount.setText(String.valueOf(newCount));
 
             int totalPrice2 = mFood.getRealPrice() * newCount;
+            int totalRewardPoint2 = mFood.getRewardPoint() * newCount;
             String strTotalPrice2 = totalPrice2 + Constant.CURRENCY;
             tvFoodPriceCart.setText(strTotalPrice2);
 
             mFood.setCount(newCount);
             mFood.setTotalPrice(totalPrice2);
+            mFood.setTotalRewardPoint(totalRewardPoint2);
         });
 
         tvCancel.setOnClickListener(v -> bottomSheetDialog.dismiss());
