@@ -7,7 +7,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,8 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.BaseActivity;
-import com.pro.foodorder.activity.OrderDetailActivity;
-import com.pro.foodorder.adapter.RevenueAdapter;
+import com.pro.foodorder.adapter.admin.RevenueAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityAdminReportBinding;
@@ -147,7 +145,7 @@ public class AdminReportActivity extends BaseActivity {
     private void detailOrderItem(Order order) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(Constant.KEY_INTENT_ORDER_OBJECT, order);
-        GlobalFunction.startActivity(getApplicationContext(), OrderDetailActivity.class, bundle);
+        GlobalFunction.startActivity(getApplicationContext(), AdminOrderDetailActivity.class, bundle);
     }
 
     private int getTotalValues(List<Order> list) {

@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pro.foodorder.R;
-import com.pro.foodorder.adapter.admin.AdminOrderAdapter;
 import com.pro.foodorder.constant.Constant;
 import com.pro.foodorder.databinding.ItemOrderBinding;
+import com.pro.foodorder.listener.IOnManageHistoryOrderListener;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.utils.DateTimeUtils;
 
@@ -20,10 +19,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     private Context mContext;
     private final List<Order> mListOrder;
+    IOnManageHistoryOrderListener mIOnManageHistoryOrderListener;
 
-    public OrderAdapter(Context mContext, List<Order> mListOrder) {
+    public OrderAdapter(Context mContext, List<Order> mListOrder, IOnManageHistoryOrderListener mIOnManageHistoryOrderListener) {
         this.mContext = mContext;
         this.mListOrder = mListOrder;
+        this.mIOnManageHistoryOrderListener = mIOnManageHistoryOrderListener;
     }
 
     @NonNull
@@ -40,11 +41,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         if (order == null) {
             return;
         }
-        if (order.isCompleted()) {
-            holder.mItemOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.black_overlay2));
-        } else {
-            holder.mItemOrderBinding.layoutItem.setBackgroundColor(mContext.getResources().getColor(R.color.white));
-        }
+
+        holder.mItemOrderBinding.tvReview.setOnClickListener(v -> mIOnManageHistoryOrderListener.onClickReviewOrder(order));
+
         holder.mItemOrderBinding.tvId.setText(String.valueOf(order.getId()));
         holder.mItemOrderBinding.tvName.setText(order.getName());
         holder.mItemOrderBinding.tvPhone.setText(order.getPhone());
@@ -75,7 +74,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder {
-
         private final ItemOrderBinding mItemOrderBinding;
 
         public OrderViewHolder(@NonNull ItemOrderBinding itemOrderBinding) {

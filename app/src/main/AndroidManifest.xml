@@ -34,6 +34,12 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.admin.AdminReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MyVoucherActivity"
             android:exported="false" />
         <activity
@@ -67,7 +73,7 @@
             android:name=".activity.FeedbackActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OrderDetailActivity"
+            android:name=".activity.admin.AdminOrderDetailActivity"
             android:exported="false" />
         <activity
             android:name=".activity.admin.AddShipperActivity"

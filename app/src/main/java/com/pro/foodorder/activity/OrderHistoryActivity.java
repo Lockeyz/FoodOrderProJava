@@ -12,7 +12,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.adapter.OrderAdapter;
+import com.pro.foodorder.constant.Constant;
+import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.ActivityOrderHistoryBinding;
+import com.pro.foodorder.listener.IOnManageHistoryOrderListener;
 import com.pro.foodorder.model.Order;
 import com.pro.foodorder.prefs.DataStoreManager;
 
@@ -41,6 +44,7 @@ public class OrderHistoryActivity extends BaseActivity {
         mActivityOrderHistoryBinding.toolbar.imgCart.setVisibility(View.GONE);
         mActivityOrderHistoryBinding.toolbar.tvTitle.setText(getString(R.string.order_history));
         mActivityOrderHistoryBinding.toolbar.imgBack.setOnClickListener(v -> onBackPressed());
+
     }
 
     private void initView() {
@@ -67,7 +71,13 @@ public class OrderHistoryActivity extends BaseActivity {
                                 }
                             }
                         }
-                        mOrderAdapter = new OrderAdapter(OrderHistoryActivity.this, mListOrder);
+                        mOrderAdapter = new OrderAdapter(getApplication(), mListOrder, new IOnManageHistoryOrderListener() {
+                            @Override
+                            public void onClickReviewOrder(Order order) {
+                                reviewOrder(order);
+                            }
+                        });
+
                         mActivityOrderHistoryBinding.rcvOrderHistory.setAdapter(mOrderAdapter);
                     }
 
@@ -75,6 +85,12 @@ public class OrderHistoryActivity extends BaseActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
+    }
+
+    private void reviewOrder(Order order) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constant.KEY_INTENT_ORDER_OBJECT, order);
+        GlobalFunction.startActivity(this, ReviewActivity.class, bundle);
     }
 
     @Override

@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.admin.AdminMainActivity;
-import com.pro.foodorder.adapter.FeedbackAdapter;
+import com.pro.foodorder.adapter.admin.AdminFeedbackAdapter;
 import com.pro.foodorder.databinding.FragmentAdminFeedbackBinding;
 import com.pro.foodorder.fragment.BaseFragment;
 import com.pro.foodorder.model.Feedback;
@@ -27,7 +27,7 @@ public class AdminFeedbackFragment extends BaseFragment {
 
     private FragmentAdminFeedbackBinding mFragmentAdminFeedbackBinding;
     private List<Feedback> mListFeedback;
-    private FeedbackAdapter mFeedbackAdapter;
+    private AdminFeedbackAdapter mAdminFeedbackAdapter;
 
     @Nullable
     @Override
@@ -73,8 +73,8 @@ public class AdminFeedbackFragment extends BaseFragment {
                                 mListFeedback.add(0, feedback);
                             }
                         }
-                        mFeedbackAdapter = new FeedbackAdapter(mListFeedback);
-                        mFragmentAdminFeedbackBinding.rcvFeedback.setAdapter(mFeedbackAdapter);
+                        mAdminFeedbackAdapter = new AdminFeedbackAdapter(mListFeedback);
+                        mFragmentAdminFeedbackBinding.rcvFeedback.setAdapter(mAdminFeedbackAdapter);
                     }
 
                     @Override

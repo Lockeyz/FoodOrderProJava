@@ -188,7 +188,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/chb_status"
                 android:layout_centerVertical="true"
                 android:orientation="vertical">
 
@@ -243,8 +242,50 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
-
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5">
+
+            <TextView
+                android:id="@+id/tv_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="-2dp"
+                android:background="@drawable/bg_green_shape_corner_6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Đánh giá của khách hàng"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal" />
+        </RelativeLayout>
+
     </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_review"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:text="Đánh giá, phản hồi"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        android:textSize="@dimen/text_size_normal"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rcv_feedback"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@+id/tv_review"-->
+<!--        android:layout_marginStart="@dimen/define_dimen_10"-->
+<!--        android:layout_marginTop="@dimen/define_dimen_10"-->
+<!--        android:layout_marginEnd="@dimen/define_dimen_10"-->
+<!--        android:layout_marginBottom="@dimen/define_dimen_10" />-->
 
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.pro.foodorder.activity.admin;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
@@ -13,9 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pro.foodorder.ControllerApplication;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.BaseActivity;
-import com.pro.foodorder.activity.MainActivity;
-import com.pro.foodorder.adapter.FeedbackAdapter;
-import com.pro.foodorder.databinding.ActivityOrderHistoryBinding;
+import com.pro.foodorder.adapter.admin.AdminFeedbackAdapter;
 import com.pro.foodorder.databinding.ActivityAdminFeedbackBinding;
 import com.pro.foodorder.model.Feedback;
 
@@ -26,7 +23,7 @@ public class AdminFeedbackActivity extends BaseActivity {
 
     private ActivityAdminFeedbackBinding mActivityAdminFeedbackBinding;
     private List<Feedback> mListFeedback;
-    private FeedbackAdapter mFeedbackAdapter;
+    private AdminFeedbackAdapter mAdminFeedbackAdapter;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +66,8 @@ public class AdminFeedbackActivity extends BaseActivity {
                                 mListFeedback.add(0, feedback);
                             }
                         }
-                        mFeedbackAdapter = new FeedbackAdapter(mListFeedback);
-                        mActivityAdminFeedbackBinding.rcvFeedback.setAdapter(mFeedbackAdapter);
+                        mAdminFeedbackAdapter = new AdminFeedbackAdapter(mListFeedback);
+                        mActivityAdminFeedbackBinding.rcvFeedback.setAdapter(mAdminFeedbackAdapter);
                     }
 
                     @Override

@@ -12,17 +12,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
+        android:background="@color/black_overlay2"
         android:layout_below="@+id/layout_confirm">
 
-        <TextView
-
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Đơn hàng đã hoàn thành"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Đơn hàng đã hoàn thành"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -218,5 +226,24 @@
                 android:textSize="@dimen/text_size_small"
                 android:textStyle="bold" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5">
+
+            <TextView
+                android:id="@+id/tv_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_green_shape_corner_6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Đánh giá đơn hàng"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

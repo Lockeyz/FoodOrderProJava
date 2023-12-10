@@ -1,4 +1,4 @@
-package com.pro.foodorder.adapter;
+package com.pro.foodorder.adapter.admin;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -47,19 +47,7 @@ public class RevenueAdapter extends RecyclerView.Adapter<RevenueAdapter.RevenueV
         holder.mItemRevenueBinding.tvTotalAmount.setText(strAmount);
 
         holder.itemView.setOnClickListener(v -> {
-//            Intent intent = new Intent(context, DetailOrderActivity.class);
-//            intent.putExtra("id", order.getId());
-//            intent.putExtra("email", order.getEmail());
-//            intent.putExtra("name", order.getName());
-//            intent.putExtra("phone", order.getPhone());
-//            intent.putExtra("address", order.getAddress());
-//            intent.putExtra("menu", order.getFoods());
-//            intent.putExtra("amount", order.getAmount());
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(intent);
-
             iOnManageOrderListener.onClickDetailOrder(order);
-
         });
     }
 

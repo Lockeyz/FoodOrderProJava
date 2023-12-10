@@ -49,6 +49,9 @@ public class ControllerApplication extends Application {
     public DatabaseReference getALlFeedbackDatabaseReference() {
         return mFirebaseDatabase.getReference("feedback");
     }
+    public DatabaseReference getALlReviewDatabaseReference() {
+        return mFirebaseDatabase.getReference("review");
+    }
 
     public DatabaseReference getAllBookingDatabaseReference() {
         return mFirebaseDatabase.getReference("booking");

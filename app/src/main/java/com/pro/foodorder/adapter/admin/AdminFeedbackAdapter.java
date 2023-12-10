@@ -1,4 +1,4 @@
-package com.pro.foodorder.adapter;
+package com.pro.foodorder.adapter.admin;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -11,20 +11,20 @@ import com.pro.foodorder.model.Feedback;
 
 import java.util.List;
 
-public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.FeedbackViewHolder> {
+public class AdminFeedbackAdapter extends RecyclerView.Adapter<AdminFeedbackAdapter.FeedbackViewHolder> {
 
     private final List<Feedback> mListFeedback;
 
-    public FeedbackAdapter(List<Feedback> mListFeedback) {
+    public AdminFeedbackAdapter(List<Feedback> mListFeedback) {
         this.mListFeedback = mListFeedback;
     }
 
     @NonNull
     @Override
     public FeedbackViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemFeedbackBinding itemFeedbackBinding = ItemFeedbackBinding.inflate(LayoutInflater.from(parent.getContext()),
+        ItemFeedbackBinding mItemFeedbackBinding = ItemFeedbackBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false);
-        return new FeedbackViewHolder(itemFeedbackBinding);
+        return new FeedbackViewHolder(mItemFeedbackBinding);
     }
 
     @Override
