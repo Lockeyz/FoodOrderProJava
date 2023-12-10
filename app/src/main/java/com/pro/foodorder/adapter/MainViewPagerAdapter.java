@@ -7,8 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.pro.foodorder.fragment.AccountFragment;
 import com.pro.foodorder.fragment.CartFragment;
-import com.pro.foodorder.fragment.ContactFragment;
-import com.pro.foodorder.fragment.FeedbackFragment;
 import com.pro.foodorder.fragment.HomeFragment;
 import com.pro.foodorder.fragment.OrderFragment;
 import com.pro.foodorder.fragment.PromotionFragment;

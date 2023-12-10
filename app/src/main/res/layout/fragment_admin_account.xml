@@ -8,10 +8,11 @@
     android:padding="@dimen/define_dimen_16"
     tools:ignore="ContentDescription, UseCompoundDrawables">
 
-    <ImageView
-        android:layout_width="@dimen/define_dimen_50"
-        android:layout_height="@dimen/define_dimen_50"
-        android:src="@drawable/ic_avatar_default" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_avatar_default"/>
 
     <TextView
         android:id="@+id/tv_email"

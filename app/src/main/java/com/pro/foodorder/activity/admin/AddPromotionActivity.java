@@ -59,7 +59,7 @@ public class AddPromotionActivity extends BaseActivity {
 
     private void initView() {
         if (isUpdate) {
-            mActivityAddPromotionBinding.toolbar.tvTitle.setText(getString(R.string.edit_food));
+            mActivityAddPromotionBinding.toolbar.tvTitle.setText("Chỉnh sửa khuyến mãi");
             mActivityAddPromotionBinding.btnAddOrEdit.setText(getString(R.string.action_edit));
 
             mActivityAddPromotionBinding.edtName.setText(mPromotion.getName());
@@ -108,17 +108,17 @@ public class AddPromotionActivity extends BaseActivity {
         }
 
         if (StringUtil.isEmpty(strName)) {
-            Toast.makeText(this, getString(R.string.msg_name_food_require), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập tên khyến mãi", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (StringUtil.isEmpty(strDescription)) {
-            Toast.makeText(this, getString(R.string.msg_description_food_require), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập mô tả khuyến mãi", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (StringUtil.isEmpty(strImage)) {
-            Toast.makeText(this, getString(R.string.msg_image_food_require), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập link ảnh khuyến mãi", Toast.LENGTH_SHORT).show();
             return;
         }
 

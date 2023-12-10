@@ -105,7 +105,7 @@ public class AdminReviewActivity extends BaseActivity {
                         }
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Review review = dataSnapshot.getValue(Review.class);
-                            if (review != null) {
+                            if (review != null && review.getOrderId().contains(mOrder.getId()+"")) {
                                 mListReview.add(0, review);
                             }
                         }

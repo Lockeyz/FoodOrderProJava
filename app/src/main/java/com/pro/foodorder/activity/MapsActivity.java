@@ -52,8 +52,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mActivityMapsBinding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(mActivityMapsBinding.getRoot());
 
-//        map = findViewById(R.id.map);
-//        searchView = findViewById(R.id.search);
         initToolbar();
         mActivityMapsBinding.search.clearFocus();
 

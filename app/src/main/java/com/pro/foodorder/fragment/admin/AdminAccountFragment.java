@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.pro.foodorder.R;
 import com.pro.foodorder.activity.admin.AdminFeedbackActivity;
@@ -21,7 +22,9 @@ import com.pro.foodorder.activity.admin.AdminVoucherActivity;
 import com.pro.foodorder.constant.GlobalFunction;
 import com.pro.foodorder.databinding.FragmentAdminAccountBinding;
 import com.pro.foodorder.fragment.BaseFragment;
+import com.pro.foodorder.model.User;
 import com.pro.foodorder.prefs.DataStoreManager;
+import com.pro.foodorder.utils.GlideUtils;
 
 public class AdminAccountFragment extends BaseFragment {
 
@@ -29,6 +32,14 @@ public class AdminAccountFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentAdminAccountBinding fragmentAdminAccountBinding = FragmentAdminAccountBinding.inflate(inflater, container, false);
+
+        FirebaseDatabase.getInstance().getReference("admin/"+FirebaseAuth.getInstance().getUid())
+                .get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        User user = task.getResult().getValue(User.class);
+                        GlideUtils.loadUrl(user.getAvatar(), fragmentAdminAccountBinding.imageAvatar);
+                    }
+                });
 
         fragmentAdminAccountBinding.tvEmail.setText(DataStoreManager.getUser().getEmail());
 

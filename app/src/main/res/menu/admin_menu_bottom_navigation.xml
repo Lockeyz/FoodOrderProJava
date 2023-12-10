@@ -13,13 +13,8 @@
 
     <item
         android:id="@+id/nav_order"
-        android:icon="@drawable/ic_nav_history"
+        android:icon="@drawable/ic_nav_order"
         android:title="@string/order" />
-
-<!--    <item-->
-<!--        android:id="@+id/nav_feedback"-->
-<!--        android:icon="@drawable/ic_nav_feedback"-->
-<!--        android:title="@string/feedback" />-->
 
     <item
         android:id="@+id/nav_shipper_account"
