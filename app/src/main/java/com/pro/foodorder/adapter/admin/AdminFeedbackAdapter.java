@@ -6,8 +6,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pro.foodorder.databinding.ItemFeedbackBinding;
 import com.pro.foodorder.model.Feedback;
+import com.pro.foodorder.model.User;
+import com.pro.foodorder.utils.GlideUtils;
 
 import java.util.List;
 
@@ -33,6 +37,7 @@ public class AdminFeedbackAdapter extends RecyclerView.Adapter<AdminFeedbackAdap
         if (feedback == null) {
             return;
         }
+
         holder.mItemFeedbackBinding.tvEmail.setText(feedback.getEmail());
         holder.mItemFeedbackBinding.tvFeedback.setText(feedback.getComment());
     }

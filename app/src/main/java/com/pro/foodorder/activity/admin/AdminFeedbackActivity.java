@@ -47,6 +47,7 @@ public class AdminFeedbackActivity extends BaseActivity {
     private void initView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mActivityAdminFeedbackBinding.rcvFeedback.setLayoutManager(linearLayoutManager);
+
     }
 
     public void getListFeedback() {
